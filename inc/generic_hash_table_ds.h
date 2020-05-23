@@ -3,6 +3,13 @@
 
 #include <stddef.h> 
 
+typedef enum {
+    GHT_SUCCESS = 0,
+    GHT_ITEM_NOT_FOUND,
+    GHT_INVALID_PARAMS,
+    GHT_FAIL
+} ght_ret_status_t;
+
 typedef struct _ght_item {
 
     unsigned long       id;
