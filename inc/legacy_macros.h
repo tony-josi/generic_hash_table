@@ -1,7 +1,6 @@
 #ifndef _LEGACY_MACROS_H
 #define _LEGACY_MACROS_H
 
-
 #ifndef EXIT_SUCCESS
 #define EXIT_SUCCESS                    0
 #endif
