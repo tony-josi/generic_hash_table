@@ -20,6 +20,7 @@ typedef struct _ght_item {
 typedef struct _g_hash_table {
 
     size_t              base_size;
+    size_t              size;
     size_t              count;
     ght_item_t         *items;
 

@@ -1,5 +1,5 @@
   
-TARGET = cvd19ssim
+TARGET = genericht
 STD_LIBS = -lm
 CC = gcc
 CFLAGS = -std=c99 -pedantic -Wall -Wextra -Wformat -Ofast -ggdb3
