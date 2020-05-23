@@ -1,0 +1,6 @@
+genericht
+*.o
+*.exe
+*.out
+.vscode/*
+
