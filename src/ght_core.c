@@ -48,7 +48,7 @@ ght_ret_status_t ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
 
 }
 
-ght_ret_status_t ght_search(g_hash_table_t *ht, unsigned long key, void *ret_ptr) {
+ght_ret_status_t ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_ptr) {
 
     unsigned int chain_len = 0;
     size_t index = (size_t) get_hash(key, (unsigned long) ht->capacity, chain_len);
@@ -75,7 +75,7 @@ ght_ret_status_t ght_search(g_hash_table_t *ht, unsigned long key, void *ret_ptr
 #endif /* PRINT_LOG */
 
     if(ht->items[index] != NULL) {
-        memcpy(ret_ptr, (*(ht->items[index])).val_ptr, ht->item_size);
+        *ret_ptr = index;
         return GHT_SUCCESS;
     }
 
@@ -103,5 +103,19 @@ ght_ret_status_t ght_deinit(g_hash_table_t *ht) {
     }
 
     return GHT_FAIL;
-
 }
+
+
+
+ght_ret_status_t ght_get(g_hash_table_t *ht, unsigned long key, void *ret_ptr) {
+
+    size_t index;
+
+    if(ght_search(ht, key, &index) != GHT_SUCCESS)
+        return GHT_FAIL;
+
+    memcpy(ret_ptr, (*(ht->items[index])).val_ptr, ht->item_size);
+    return GHT_SUCCESS;
+}
+
+
