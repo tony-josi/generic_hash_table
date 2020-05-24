@@ -16,7 +16,7 @@ __ght_core_util_item_init(ght_item_t *item, unsigned long key, void *val, size_t
         return GHT_FAIL;
     }
     
-    if(memcpy(item->val_ptr, val, size)) {
+    if(!memcpy(item->val_ptr, val, size)) {
         perror("    ERR: __ght_core_util_item_init(): memcpy()");
         return GHT_FAIL;
     }
