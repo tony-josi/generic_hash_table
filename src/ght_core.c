@@ -22,11 +22,25 @@ ght_ret_status_t ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
 
     unsigned int chain_len = 0;
     size_t index = (size_t) get_hash(key, (unsigned long) ht->capacity, chain_len);
+
+#if PRINT_LOG
+    printf("Hashes: %ld", index);
+#endif /* PRINT_LOG */
+
     while((ht->items[index]) != NULL) {
         ++chain_len;
         index = (size_t) get_hash(key, (unsigned long) ht->capacity, chain_len);
+
+#if PRINT_LOG
+        printf(" %ld", index);
+#endif /* PRINT_LOG */
+
     }
-    printf("Hash: %ld\n", index);
+
+#if PRINT_LOG
+    printf("\n");
+#endif /* PRINT_LOG */
+
     if(__ght_core_util_item_init(&(ht->items[index]), key, val, ht->item_size) != GHT_SUCCESS)
         return GHT_FAIL;
 
@@ -39,13 +53,26 @@ ght_ret_status_t ght_search(g_hash_table_t *ht, unsigned long key, void *ret_ptr
     unsigned int chain_len = 0;
     size_t index = (size_t) get_hash(key, (unsigned long) ht->capacity, chain_len);
 
+#if PRINT_LOG
+    printf("Return Hashes: %ld", index);
+#endif /* PRINT_LOG */
+
     while(((*ht->items[index]).key) != key) {
 
-        if(++chain_len < ht->capacity)
+        if(++chain_len >= ht->capacity)
             return GHT_FAIL;
 
         index = (size_t) get_hash(key, (unsigned long) ht->capacity, chain_len);
+
+#if PRINT_LOG
+        printf(" %ld", index);
+#endif /* PRINT_LOG */
+
     }
+
+#if PRINT_LOG
+    printf("\n");
+#endif /* PRINT_LOG */
 
     if(ht->items[index] != NULL) {
         memcpy(ret_ptr, (*(ht->items[index])).val_ptr, ht->item_size);
@@ -61,7 +88,11 @@ ght_ret_status_t ght_deinit(g_hash_table_t *ht) {
     if(ht->items) {
         for(size_t i = 0; i < ht->capacity; i++) {
             if(ht->items[i] != NULL) {
+
+#if PRINT_LOG
                 printf("_____________Deinit: %ld\n", i);
+#endif /* PRINT_LOG */
+
                 if(__ght_core_util_item_deinit(ht->items[i]) != GHT_SUCCESS)
                     return GHT_FAIL;
             }

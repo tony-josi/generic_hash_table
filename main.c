@@ -5,7 +5,7 @@
 #include "inc/legacy_macros.h"
 #include "inc/generic_hash_table.h"
 
-#define BASE_SIZE                   97
+#define BASE_SIZE                   73
 #define TEST_CASES                  67
 
 typedef struct _test_struct {
@@ -18,7 +18,8 @@ typedef struct _test_struct {
 int main() {
 
     g_hash_table_t test_htable;
-    test_t temp_test;
+    test_t temp_test, temp_test_ret;
+    unsigned long temp_key;
     if(ght_init(&test_htable, BASE_SIZE, sizeof(test_t)) != GHT_SUCCESS)
         printf("FAILED!\n");
 
@@ -29,8 +30,13 @@ int main() {
     while((t_case_cntr++) < (TEST_CASES)) {
         temp_test.id = RAND_GEN(1000);
         temp_test.val = (float) RAND_GEN(200);
+        temp_key = (RAND_GEN(10000));
         printf("Data: %d     %f\n", temp_test.id, temp_test.val);
-        ght_insert(&test_htable, (RAND_GEN(10000)), (void *)&temp_test);
+        ght_insert(&test_htable, temp_key, (void *)&temp_test);
+        if(ght_search(&test_htable, temp_key, &temp_test_ret) == GHT_SUCCESS) {
+            printf("Return ID: %ld, %d %f\n", temp_key, temp_test_ret.id, temp_test_ret.val);
+        }
+        printf("\n\n");
     }
 
     if(ght_deinit(&test_htable) != GHT_SUCCESS)

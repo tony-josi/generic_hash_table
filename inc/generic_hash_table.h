@@ -3,7 +3,8 @@
 
 #include "./generic_hash_table_ds.h"
 
-#define             HASH_FUNC_2_PRIME           67
+#define HASH_FUNC_2_PRIME                 67
+#define PRINT_LOG                         0
 
 ght_ret_status_t ght_init(g_hash_table_t *, size_t, size_t);
 ght_ret_status_t ght_insert(g_hash_table_t *, unsigned long, void *);
