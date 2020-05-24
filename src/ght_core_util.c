@@ -127,5 +127,23 @@ ght_ret_status_t __ght_core_util_resize(g_hash_table_t *ht, size_t size_estimate
     return GHT_SUCCESS;
 }
 
+ght_ret_status_t 
+__ght_core_util_scale_up(g_hash_table_t *ht) {
+    
+    if(__ght_core_util_resize(ht, (ht->capacity *= 2)) != GHT_SUCCESS)
+        return GHT_FAIL;
+    
+    return GHT_SUCCESS;
+}
+
+
+ght_ret_status_t 
+__ght_core_util_scale_down(g_hash_table_t *ht) {
+
+    if(__ght_core_util_resize(ht, (ht->capacity /= 2)) != GHT_SUCCESS) 
+        return GHT_FAIL;
+
+    return GHT_SUCCESS;
+}
 
 
