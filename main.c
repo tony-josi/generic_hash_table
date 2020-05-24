@@ -33,7 +33,7 @@ int main() {
         temp_key = (RAND_GEN(10000));
         printf("Data: %d     %f\n", temp_test.id, temp_test.val);
         ght_insert(&test_htable, temp_key, (void *)&temp_test);
-        if(ght_search(&test_htable, temp_key, &temp_test_ret) == GHT_SUCCESS) {
+        if(ght_get(&test_htable, temp_key, &temp_test_ret) == GHT_SUCCESS) {
             printf("Return ID: %ld, %d %f\n", temp_key, temp_test_ret.id, temp_test_ret.val);
         }
         printf("\n\n");
