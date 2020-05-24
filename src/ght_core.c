@@ -20,6 +20,11 @@ ght_ret_status_t ght_init(g_hash_table_t *ht, size_t base, size_t item_sz) {
 
 ght_ret_status_t ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
 
+    unsigned int ht_density = (ht->count * 100) / ht->capacity;
+    if(ht_density > SCALE_UP_THRESHOLD)
+        if(__ght_core_util_scale_up(ht) != GHT_SUCCESS)
+            return GHT_FAIL;
+
     unsigned int chain_len = 0;
     size_t index = (size_t) __ght_core_util_get_hash(key, (unsigned long) ht->capacity, chain_len);
 
@@ -121,12 +126,22 @@ ght_ret_status_t ght_get(g_hash_table_t *ht, unsigned long key, void *ret_ptr) {
 
 ght_ret_status_t ght_delete(g_hash_table_t *ht, unsigned long key) {
 
+    unsigned int ht_density = (ht->count * 100) / ht->capacity;
+    if(ht_density < SCALE_DOWN_THRESHOLD)
+        if(__ght_core_util_scale_down(ht) != GHT_SUCCESS)
+            return GHT_FAIL;
+
     size_t index;
 
-    if(ght_search(ht, key, &index) != GHT_SUCCESS)
-        return GHT_FAIL;
+    if(ht->count > 0) {
 
-    if(__ght_core_util_item_deinit(&(ht->items[index])) != GHT_SUCCESS)
+        if(ght_search(ht, key, &index) != GHT_SUCCESS)
+            return GHT_FAIL;
+
+        if(__ght_core_util_item_deinit(&(ht->items[index])) != GHT_SUCCESS)
+            return GHT_FAIL;
+    }
+    else
         return GHT_FAIL;
 
 #if PRINT_LOG

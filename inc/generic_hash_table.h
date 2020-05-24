@@ -5,6 +5,8 @@
 
 #define HASH_FUNC_2_PRIME                 67
 #define PRINT_LOG                         1
+#define SCALE_UP_THRESHOLD                60
+#define SCALE_DOWN_THRESHOLD              20
 
 ght_ret_status_t ght_init(g_hash_table_t *, size_t, size_t);
 ght_ret_status_t ght_insert(g_hash_table_t *, unsigned long, void *);
