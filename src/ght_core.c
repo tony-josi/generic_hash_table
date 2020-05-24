@@ -21,7 +21,7 @@ ght_ret_status_t ght_init(g_hash_table_t *ht, size_t base, size_t item_sz) {
 ght_ret_status_t ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
 
     unsigned int chain_len = 0;
-    size_t index = (size_t) get_hash(key, (unsigned long) ht->capacity, chain_len);
+    size_t index = (size_t) __ght_core_util_get_hash(key, (unsigned long) ht->capacity, chain_len);
 
 #if PRINT_LOG
     printf("Hashes: %ld", index);
@@ -29,7 +29,7 @@ ght_ret_status_t ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
 
     while((ht->items[index]) != NULL) {
         ++chain_len;
-        index = (size_t) get_hash(key, (unsigned long) ht->capacity, chain_len);
+        index = (size_t) __ght_core_util_get_hash(key, (unsigned long) ht->capacity, chain_len);
 
 #if PRINT_LOG
         printf(" %ld", index);
@@ -52,7 +52,7 @@ ght_ret_status_t ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
 ght_ret_status_t ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_ptr) {
 
     unsigned int chain_len = 0;
-    size_t index = (size_t) get_hash(key, (unsigned long) ht->capacity, chain_len);
+    size_t index = (size_t) __ght_core_util_get_hash(key, (unsigned long) ht->capacity, chain_len);
 
 #if PRINT_LOG
     printf("Return Hashes: %ld", index);
@@ -63,7 +63,7 @@ ght_ret_status_t ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_p
         if(++chain_len >= ht->capacity)
             return GHT_ITEM_NOT_FOUND;
 
-        index = (size_t) get_hash(key, (unsigned long) ht->capacity, chain_len);
+        index = (size_t) __ght_core_util_get_hash(key, (unsigned long) ht->capacity, chain_len);
 
 #if PRINT_LOG
         printf(" %ld", index);

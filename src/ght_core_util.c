@@ -2,10 +2,16 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
+#include <math.h>
 
 #include "../inc/generic_hash_table.h"
 #include "../inc/generic_hash_table_ds.h"
 #include "../inc/generic_hash_table_core_util.h"
+
+static unsigned long    hash_func_1(const unsigned long, const unsigned long);
+static unsigned long    hash_func_2(const unsigned long);
+static unsigned int     check_if_prime(unsigned int);
+static unsigned int     get_next_prime(unsigned int);
 
 ght_ret_status_t 
 __ght_core_util_item_init(ght_item_t **item, unsigned long key, void *val, size_t size) {
@@ -45,7 +51,8 @@ __ght_core_util_item_deinit(ght_item_t **item) {
     return GHT_SUCCESS;
 }
 
-unsigned long hash_func_1(const unsigned long key, const unsigned long m) {
+unsigned long 
+hash_func_1(const unsigned long key, const unsigned long m) {
     
     unsigned long x = key;
     x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
@@ -55,7 +62,8 @@ unsigned long hash_func_1(const unsigned long key, const unsigned long m) {
 
 }
 
-unsigned long hash_func_2(const unsigned long key) {
+unsigned long 
+hash_func_2(const unsigned long key) {
     
     unsigned long x = (HASH_FUNC_2_PRIME - (key % HASH_FUNC_2_PRIME));
     return x;
@@ -63,10 +71,34 @@ unsigned long hash_func_2(const unsigned long key) {
 }
 
 unsigned long 
-get_hash(const unsigned long key, const unsigned long capacity, unsigned int chain_degreee) {
+__ght_core_util_get_hash(const unsigned long key, const unsigned long capacity, unsigned int chain_degreee) {
 
     const unsigned long first_hash = hash_func_1(key, capacity);
     const unsigned long second_hash = hash_func_2(key);
     return ((first_hash + (chain_degreee * second_hash)) % capacity);
 
 }
+
+unsigned int 
+check_if_prime(unsigned int num) {
+    if(num < 2)
+        return 1;
+    if(num < 4)
+        return 0;
+    if((num % 2) == 0)
+        return 0;
+
+    for(unsigned int itr = 3; itr <= floor(sqrt((double) num)); itr += 2)
+        if((num % itr) == 0)
+            return 1;
+    return 0;
+}
+
+unsigned int     
+get_next_prime(unsigned int base) {
+
+    while(check_if_prime(++base) != 0);
+    return base;
+}
+
+
