@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "../inc/generic_hash_table.h"
 #include "../inc/generic_hash_table_core_util.h"
@@ -24,8 +25,8 @@ ght_ret_status_t ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
         ++chain_len;
         index = (size_t) get_hash(key, (unsigned long) ht->capacity, chain_len);
     }
-
-    if(__ght_core_util_item_init(ht->items[index], key, val, ht->item_size) != GHT_SUCCESS)
+    printf("Hash: %ld\n", index);
+    if(__ght_core_util_item_init(&(ht->items[index]), key, val, ht->item_size) != GHT_SUCCESS)
         return GHT_FAIL;
 
     return GHT_SUCCESS;
@@ -36,9 +37,11 @@ ght_ret_status_t ght_deinit(g_hash_table_t *ht) {
 
     if(ht->items) {
         for(size_t i = 0; i < ht->capacity; i++) {
-            if(ht->items[i] != NULL) 
+            if(ht->items[i] != NULL) {
+                printf("_____________Deinit: %ld\n", i);
                 if(__ght_core_util_item_deinit(ht->items[i]) != GHT_SUCCESS)
                     return GHT_FAIL;
+            }
         }
     
         free(ht->items);
