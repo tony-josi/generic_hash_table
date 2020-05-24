@@ -2,10 +2,10 @@
 TARGET = genericht
 STD_LIBS = -lm
 CC = gcc
-CFLAGS = -std=c99 -pedantic -Wall -Wextra -Wformat -Ofast -ggdb3
-CFLAGS_MAC = -std=c99 -pedantic -Wall -Wextra -Wformat -Ofast -ggdb3
+CFLAGS = -std=c11 -pedantic -Wall -Wextra -Wformat -Ofast -ggdb3
+CFLAGS_MAC = -std=c11 -pedantic -Wall -Wextra -Wformat -Ofast -ggdb3
 LFLAGS = -pedantic -Wall -Wextra 
-CFLAGS_STRICT = -std=c99 -Wall -pedantic -ggdb3 -Ofast -ggdb3 -mmacosx-version-min=10.0 \
+CFLAGS_STRICT = -std=c11 -Wall -pedantic -ggdb3 -Ofast -ggdb3 -mmacosx-version-min=10.0 \
 -pedantic-errors -Wextra -Waggregate-return -Wcast-align \
 -Wcast-qual -Wconversion \
 -Wdisabled-optimization \

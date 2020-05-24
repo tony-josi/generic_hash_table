@@ -12,15 +12,16 @@ typedef enum {
 
 typedef struct _ght_item {
 
-    unsigned long       id;
-    void               *ptr;
+    unsigned long       key;
+    void               *val_ptr;
 
 } ght_item_t;
 
 typedef struct _g_hash_table {
 
-    size_t              base_size;
-    size_t              size;
+    size_t              base_capacity;
+    size_t              capacity;
+    size_t              item_size;
     size_t              count;
     ght_item_t         *items;
 
