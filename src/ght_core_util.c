@@ -6,9 +6,10 @@
 #include "../inc/generic_hash_table_ds.h"
 #include "../inc/generic_hash_table_core_util.h"
 
-ght_ret_status_t __ght_core_util_item_init
-(ght_item_t *item, unsigned long key, void *val, size_t size) {
+ght_ret_status_t 
+__ght_core_util_item_init(ght_item_t *item, unsigned long key, void *val, size_t size) {
 
+    item = malloc(sizeof(ght_item_t));
     item->key = key;
     if((item->val_ptr = malloc(size)) == NULL) {
         perror("    ERR: __ght_core_util_item_init(): malloc()");
@@ -23,16 +24,34 @@ ght_ret_status_t __ght_core_util_item_init
     return GHT_SUCCESS;
 }
 
-ght_ret_status_t __ght_core_util_item_deinit
-(ght_item_t *item) {
+ght_ret_status_t 
+__ght_core_util_item_deinit(ght_item_t *item) {
     
-    if(item->val_ptr)
-        free(item->val_ptr);
+    if(item) {
+        if(item->val_ptr)
+            free(item->val_ptr);
+        else 
+            perror("    ERR: __ght_core_util_item_deinit(): passing NULL to free(item->val_ptr)");
+
+        free(item);
+    }
     else {
-        perror("    ERR: __ght_core_util_item_deinit(): passing NULL to free()");
+        perror("    ERR: __ght_core_util_item_deinit(): passing NULL to free(item)");
         return GHT_FAIL;
     }
 
     return GHT_SUCCESS;
 }
 
+unsigned long hash_func(const unsigned long key, const unsigned long m) {
+    return (key % m);
+}
+
+unsigned long 
+get_hash(const unsigned long key, const unsigned long capacity, unsigned int chain_degreee) {
+
+    const unsigned long first_hash = hash_func(key, capacity);
+    const unsigned long second_hash = hash_func(key, capacity);
+    return ((first_hash + (chain_degreee * (second_hash + 1))) % capacity);
+
+}

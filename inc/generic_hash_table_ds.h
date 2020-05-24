@@ -23,7 +23,7 @@ typedef struct _g_hash_table {
     size_t              capacity;
     size_t              item_size;
     size_t              count;
-    ght_item_t         *items;
+    ght_item_t        **items;
 
 } g_hash_table_t;
 
