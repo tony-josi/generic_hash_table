@@ -75,7 +75,7 @@ __ght_core_util_get_hash(const unsigned long key, const unsigned long capacity, 
 
     const unsigned long first_hash = hash_func_1(key, capacity);
     const unsigned long second_hash = hash_func_2(key);
-    return ((first_hash + (chain_degreee * second_hash)) % capacity);
+    return ((first_hash + (chain_degreee * second_hash) + 1) % capacity);
 
 }
 
@@ -103,7 +103,7 @@ get_next_prime(unsigned int base) {
 
 ght_ret_status_t __ght_core_util_resize(g_hash_table_t *ht, size_t size_estimate) {
 
-    if(size_estimate < ht->base_capacity)
+    if(size_estimate < (ht->base_capacity))
         return GHT_SUCCESS;
 
     g_hash_table_t new_ht;
@@ -130,7 +130,7 @@ ght_ret_status_t __ght_core_util_resize(g_hash_table_t *ht, size_t size_estimate
 ght_ret_status_t 
 __ght_core_util_scale_up(g_hash_table_t *ht) {
     
-    if(__ght_core_util_resize(ht, (ht->capacity *= 2)) != GHT_SUCCESS)
+    if(__ght_core_util_resize(ht, (size_t)(ht->capacity * 2)) != GHT_SUCCESS)
         return GHT_FAIL;
     
     return GHT_SUCCESS;
@@ -140,7 +140,7 @@ __ght_core_util_scale_up(g_hash_table_t *ht) {
 ght_ret_status_t 
 __ght_core_util_scale_down(g_hash_table_t *ht) {
 
-    if(__ght_core_util_resize(ht, (ht->capacity /= 2)) != GHT_SUCCESS) 
+    if(__ght_core_util_resize(ht, (size_t)(ht->capacity / 2)) != GHT_SUCCESS) 
         return GHT_FAIL;
 
     return GHT_SUCCESS;
