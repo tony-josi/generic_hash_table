@@ -5,8 +5,8 @@
 #include "inc/legacy_macros.h"
 #include "inc/generic_hash_table.h"
 
-#define BASE_SIZE                   73
-#define TEST_CASES                  67
+#define BASE_SIZE                   1087
+#define TEST_CASES                  1200
 
 typedef struct _test_struct {
     int id;
