@@ -32,3 +32,19 @@ ght_ret_status_t ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
 
 }
 
+ght_ret_status_t ght_deinit(g_hash_table_t *ht) {
+
+    if(ht->items) {
+        for(size_t i = 0; i < ht->capacity; i++) {
+            if(ht->items[i] != NULL) 
+                if(__ght_core_util_item_deinit(ht->items[i]) != GHT_SUCCESS)
+                    return GHT_FAIL;
+        }
+    
+        free(ht->items);
+        return GHT_SUCCESS;
+    }
+
+    return GHT_FAIL;
+
+}

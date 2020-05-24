@@ -32,6 +32,9 @@ int main() {
         printf("Data: %d     %f\n", temp_test.id, temp_test.val);
         ght_insert(&test_htable, (RAND_GEN(10000)), (void *)&temp_test);
     }
+
+    if(ght_deinit(&test_htable) != GHT_SUCCESS)
+        printf("FAILED!\n");
     
     return EXIT_SUCCESS;
 }
