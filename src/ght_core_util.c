@@ -101,4 +101,31 @@ get_next_prime(unsigned int base) {
     return base;
 }
 
+ght_ret_status_t __ght_core_util_resize(g_hash_table_t *ht, size_t size_estimate) {
+
+    if(size_estimate < ht->base_capacity)
+        return GHT_SUCCESS;
+
+    g_hash_table_t new_ht;
+    new_ht.base_capacity = ht->base_capacity;
+    new_ht.capacity = (size_t) get_next_prime((unsigned int) size_estimate);
+    new_ht.count = 0;
+    new_ht.item_size = ht->item_size;
+    if((new_ht.items = (ght_item_t **) calloc(new_ht.capacity, sizeof(ght_item_t *)))  == NULL)
+        return GHT_FAIL;
+
+    if(ht->items) 
+        for(size_t i = 0; i < ht->capacity; i++) 
+            if(ht->items[i] != NULL) {
+                if(ght_insert(&new_ht, (*ht->items[i]).key, (*ht->items[i]).val_ptr) != \
+                GHT_SUCCESS)
+                    return GHT_FAIL;
+            }
+
+    ght_deinit(ht);
+    *ht = new_ht;
+    return GHT_SUCCESS;
+}
+
+
 

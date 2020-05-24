@@ -133,6 +133,7 @@ ght_ret_status_t ght_delete(g_hash_table_t *ht, unsigned long key) {
                 printf("Deleted: %ld\n", index);
 #endif /* PRINT_LOG */      
 
+    ht->count -= 1;
     return GHT_SUCCESS;
 
 }
