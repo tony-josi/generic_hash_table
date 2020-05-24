@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "../inc/generic_hash_table.h"
 #include "../inc/generic_hash_table_core_util.h"
@@ -30,6 +31,28 @@ ght_ret_status_t ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
         return GHT_FAIL;
 
     return GHT_SUCCESS;
+
+}
+
+ght_ret_status_t ght_search(g_hash_table_t *ht, unsigned long key, void *ret_ptr) {
+
+    unsigned int chain_len = 0;
+    size_t index = (size_t) get_hash(key, (unsigned long) ht->capacity, chain_len);
+
+    while(((*ht->items[index]).key) != key) {
+
+        if(++chain_len < ht->capacity)
+            return GHT_FAIL;
+
+        index = (size_t) get_hash(key, (unsigned long) ht->capacity, chain_len);
+    }
+
+    if(ht->items[index] != NULL) {
+        memcpy(ret_ptr, (*(ht->items[index])).val_ptr, ht->item_size);
+        return GHT_SUCCESS;
+    }
+
+    return GHT_FAIL;
 
 }
 
