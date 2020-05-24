@@ -26,15 +26,16 @@ __ght_core_util_item_init(ght_item_t **item, unsigned long key, void *val, size_
 }
 
 ght_ret_status_t 
-__ght_core_util_item_deinit(ght_item_t *item) {
+__ght_core_util_item_deinit(ght_item_t **item) {
     
-    if(item) {
-        if(item->val_ptr)
-            free(item->val_ptr);
+    if(*item) {
+        if((*item)->val_ptr)
+            free((*item)->val_ptr);
         else 
             perror("    ERR: __ght_core_util_item_deinit(): passing NULL to free(item->val_ptr)");
 
-        free(item);
+        free((*item));
+        *item = NULL;
     }
     else {
         perror("    ERR: __ght_core_util_item_deinit(): passing NULL to free(item)");

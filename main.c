@@ -35,6 +35,8 @@ int main() {
         ght_insert(&test_htable, temp_key, (void *)&temp_test);
         if(ght_get(&test_htable, temp_key, &temp_test_ret) == GHT_SUCCESS) {
             printf("Return ID: %ld, %d %f\n", temp_key, temp_test_ret.id, temp_test_ret.val);
+        if(RAND_GEN(2))
+            ght_delete(&test_htable, temp_key);
         }
         printf("\n\n");
     }

@@ -44,6 +44,7 @@ ght_ret_status_t ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
     if(__ght_core_util_item_init(&(ht->items[index]), key, val, ht->item_size) != GHT_SUCCESS)
         return GHT_FAIL;
 
+    ht->count += 1;
     return GHT_SUCCESS;
 
 }
@@ -60,7 +61,7 @@ ght_ret_status_t ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_p
     while(((*ht->items[index]).key) != key) {
 
         if(++chain_len >= ht->capacity)
-            return GHT_FAIL;
+            return GHT_ITEM_NOT_FOUND;
 
         index = (size_t) get_hash(key, (unsigned long) ht->capacity, chain_len);
 
@@ -93,7 +94,7 @@ ght_ret_status_t ght_deinit(g_hash_table_t *ht) {
                 printf("_____________Deinit: %ld\n", i);
 #endif /* PRINT_LOG */
 
-                if(__ght_core_util_item_deinit(ht->items[i]) != GHT_SUCCESS)
+                if(__ght_core_util_item_deinit(&(ht->items[i])) != GHT_SUCCESS)
                     return GHT_FAIL;
             }
         }
@@ -117,5 +118,24 @@ ght_ret_status_t ght_get(g_hash_table_t *ht, unsigned long key, void *ret_ptr) {
     memcpy(ret_ptr, (*(ht->items[index])).val_ptr, ht->item_size);
     return GHT_SUCCESS;
 }
+
+ght_ret_status_t ght_delete(g_hash_table_t *ht, unsigned long key) {
+
+    size_t index;
+
+    if(ght_search(ht, key, &index) != GHT_SUCCESS)
+        return GHT_FAIL;
+
+    if(__ght_core_util_item_deinit(&(ht->items[index])) != GHT_SUCCESS)
+        return GHT_FAIL;
+
+#if PRINT_LOG
+                printf("Deleted: %ld\n", index);
+#endif /* PRINT_LOG */      
+
+    return GHT_SUCCESS;
+
+}
+
 
 
