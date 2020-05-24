@@ -86,7 +86,7 @@ check_if_prime(unsigned int num) {
     if(num < 4)
         return 0;
     if((num % 2) == 0)
-        return 0;
+        return 1;
 
     for(unsigned int itr = 3; itr <= floor(sqrt((double) num)); itr += 2)
         if((num % itr) == 0)
