@@ -27,8 +27,9 @@ ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
     if(ht_density > SCALE_UP_THRESHOLD) {
         if(__ght_core_util_scale_up(ht) != GHT_SUCCESS) 
             return GHT_FAIL;
+
 #if PRINT_LOG
-        printf("Scale Up: %ld\n", ht->capacity);
+        printf("Scale Up: %ld   Prev Denisty: %d\n", ht->capacity, ht_density);
 #endif /* PRINT_LOG */
     }   
 
@@ -145,9 +146,9 @@ ght_delete(g_hash_table_t *ht, unsigned long key) {
     if((ht->capacity != ht->base_capacity) && (ht_density < SCALE_DOWN_THRESHOLD)) {
         if(__ght_core_util_scale_down(ht) != GHT_SUCCESS)
             return GHT_FAIL;
-            
+
 #if PRINT_LOG
-        printf("Scale Down: %ld\n", ht->capacity);
+        printf("Scale Down: %ld     Prev Density: %d\n", ht->capacity, ht_density);
 #endif /* PRINT_LOG */
     }
 
