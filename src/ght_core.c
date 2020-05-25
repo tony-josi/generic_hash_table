@@ -31,7 +31,17 @@ ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
 #if PRINT_LOG
         printf("Scale Up: %ld   Prev Denisty: %d\n", ht->capacity, ht_density);
 #endif /* PRINT_LOG */
-    }   
+    }
+
+    size_t prev_index;
+    if(ght_search(ht, key, &prev_index) == GHT_SUCCESS) {
+
+#if PRINT_LOG
+        printf("GHT_KEY_ALRDY_EXISTS Key: %ld\n", key);
+#endif /* PRINT_LOG */
+
+        return GHT_KEY_ALRDY_EXISTS;
+    }
 
     unsigned int chain_len = 0;
     size_t index = \
