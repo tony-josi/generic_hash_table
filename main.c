@@ -6,8 +6,7 @@
 #include "inc/generic_hash_table.h"
 
 #define BASE_SIZE                   1087
-#define TEST_CASES                  1400
-#define NO_OF_DELETES               1000
+#define TEST_CASES                  14000
 
 static unsigned long key_arr[TEST_CASES];
 static unsigned int key_arr_cntr = 0;
@@ -75,9 +74,10 @@ int main() {
 int main() {
 
     g_hash_table_t test_htable;
-    test_t temp_test, temp_test_ret;
+    test_t temp_test, temp_test_ret = {0, 0.0};
     unsigned long temp_key;
     unsigned int cntr = 0, insr_count = 0, retr_count = 0;
+    ght_ret_status_t ret_code;
 
     if(ght_init(&test_htable, BASE_SIZE, sizeof(test_t)) != GHT_SUCCESS)
         printf("FAILED!\n");
@@ -88,28 +88,38 @@ int main() {
         temp_test.val = (float) RAND_GEN(200);
 
         temp_key = RAND_GEN(20000);
-        if(ght_insert(&test_htable, temp_key, (void *)&temp_test) == GHT_SUCCESS) {
+        ret_code = ght_insert(&test_htable, temp_key, (void *)&temp_test);
+        if(ret_code == GHT_SUCCESS) {
 
             key_arr[key_arr_cntr] = temp_key;
             key_arr_cntr++;
             insr_count++;
-            printf("INSERTION: NO-> %d KEY-> %ld DATA: ID-> %d Val-> %f\n", \
-            insr_count, temp_key, temp_test.id, temp_test.val);
+            printf("INSERTION: ITR: %d NOS-> %d KEY-> %ld DATA: ID-> %d Val-> %f\n", \
+            cntr, insr_count, temp_key, temp_test.id, temp_test.val);
         }
+        else if(ret_code == GHT_KEY_ALRDY_EXISTS)
+            printf("______INSERTION GHT_KEY_ALRDY_EXISTS: ITR: %d NOS-> %d KEY-> %ld DATA: ID-> %d Val-> %f\n", \
+            cntr, insr_count, temp_key, temp_test.id, temp_test.val);
+        else
+            printf("______INSERTION GHT_FAIL: ITR: %d NOS-> %d KEY-> %ld DATA: ID-> %d Val-> %f\n", \
+            cntr, insr_count, temp_key, temp_test.id, temp_test.val);
 
     }
     printf("KEY_ARR_SIZE: %d\n", key_arr_cntr);
     cntr = 0;
     while(cntr++ < key_arr_cntr) {
 
-        
-        if(ght_get(&test_htable, key_arr[cntr], (void *)&temp_test_ret) == GHT_SUCCESS) {
+        ret_code = ght_get(&test_htable, key_arr[cntr], (void *)&temp_test_ret);
+        if(ret_code == GHT_SUCCESS) {
 
             retr_count++;
             printf("RETRIEVING: CNTR-> %d NO-> %d KEY-> %ld DATA: ID-> %d Val-> %f\n", \
             cntr, retr_count, key_arr[cntr], temp_test_ret.id, temp_test_ret.val);
 
         }
+        else if(ret_code == GHT_FAIL)
+            printf("______RETRIEVING GHT_FAIL: CNTR-> %d NO-> %d KEY-> %ld DATA: ID-> %d Val-> %f\n", \
+            cntr, retr_count, key_arr[cntr], temp_test_ret.id, temp_test_ret.val);
 
     }
     return 0;
