@@ -5,6 +5,7 @@
 
 typedef enum {
     GHT_SUCCESS = 0,
+    GHT_KEY_ALRDY_EXISTS,
     GHT_ITEM_NOT_FOUND,
     GHT_INVALID_PARAMS,
     GHT_FAIL

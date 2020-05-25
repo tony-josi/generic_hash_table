@@ -31,13 +31,18 @@ int main() {
         temp_test.id = RAND_GEN(1000);
         temp_test.val = (float) RAND_GEN(200);
         temp_key = (RAND_GEN(10000));
+
         printf("Data: %d     %f\n", temp_test.id, temp_test.val);
+        
         ght_insert(&test_htable, temp_key, (void *)&temp_test);
+        
         if(ght_get(&test_htable, temp_key, &temp_test_ret) == GHT_SUCCESS) {
             printf("Return ID: %ld, %d %f\n", temp_key, temp_test_ret.id, temp_test_ret.val);
+        
         if(RAND_GEN(4) == 1)
             ght_delete(&test_htable, temp_key);
         }
+        
         printf("\n\n");
     }
 
