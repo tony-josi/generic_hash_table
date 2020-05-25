@@ -124,6 +124,17 @@ int main() {
         cntr++;
 
     }
+
+    if(ght_deinit(&test_htable)!= GHT_SUCCESS) {
+        printf("DE INIT FAILED!\n");
+        return EXIT_FAILURE;
+    }
+    else {
+        printf("DE INIT SUCCESS!\n");
+        return EXIT_SUCCESS;
+    }
+    
+
     return 0;
 
 }
