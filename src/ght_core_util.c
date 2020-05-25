@@ -97,7 +97,9 @@ check_if_prime(unsigned int num) {
 unsigned int     
 get_next_prime(unsigned int base) {
 
-    while(check_if_prime(++base) != 0);
+    while(check_if_prime(base) != 0)
+        ++base;
+
     return base;
 }
 

@@ -173,7 +173,7 @@ ght_delete(g_hash_table_t *ht, unsigned long key) {
             return GHT_FAIL;
     }
     else
-        return GHT_FAIL;
+        return GHT_EMPTY;
 
 #if PRINT_LOG
                 printf("Deleted: %ld\n", index);
