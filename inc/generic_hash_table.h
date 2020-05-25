@@ -14,5 +14,6 @@ ght_ret_status_t ght_search(g_hash_table_t *, unsigned long, size_t *);
 ght_ret_status_t ght_get(g_hash_table_t *, unsigned long, void *);
 ght_ret_status_t ght_delete(g_hash_table_t *, unsigned long);
 ght_ret_status_t ght_deinit(g_hash_table_t *);
+ght_ret_status_t ght_generate_key(unsigned long *);
 
 #endif /* _GENERIC_HASH_TABLE_H */

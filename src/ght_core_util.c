@@ -3,6 +3,8 @@
 #include <string.h>
 #include <errno.h>
 #include <math.h>
+#include <time.h>
+
 
 #include "../inc/generic_hash_table.h"
 #include "../inc/generic_hash_table_ds.h"
@@ -103,7 +105,8 @@ get_next_prime(unsigned int base) {
     return base;
 }
 
-ght_ret_status_t __ght_core_util_resize(g_hash_table_t *ht, size_t size_estimate) {
+ght_ret_status_t 
+__ght_core_util_resize(g_hash_table_t *ht, size_t size_estimate) {
 
     if(size_estimate < (ht->base_capacity))
         return GHT_SUCCESS;
@@ -148,4 +151,10 @@ __ght_core_util_scale_down(g_hash_table_t *ht) {
     return GHT_SUCCESS;
 }
 
+unsigned long 
+get_time_in_nanosec(void) {
+    struct timespec ts;
+    timespec_get(&ts, TIME_UTC);
+    return (unsigned long)ts.tv_sec * 1000000000L + ts.tv_nsec;
+}
 

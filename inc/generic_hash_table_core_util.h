@@ -9,5 +9,6 @@ unsigned long    __ght_core_util_get_hash(const unsigned long, const unsigned lo
 ght_ret_status_t __ght_core_util_resize(g_hash_table_t *, size_t);
 ght_ret_status_t __ght_core_util_scale_up(g_hash_table_t *);
 ght_ret_status_t __ght_core_util_scale_down(g_hash_table_t *);
+unsigned long    get_time_in_nanosec(void);
 
 #endif /* _GENERIC_HASH_TABLE_CORE_UTIL_H */

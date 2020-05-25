@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 
 #include "../inc/generic_hash_table.h"
 #include "../inc/generic_hash_table_core_util.h"
@@ -184,5 +185,18 @@ ght_delete(g_hash_table_t *ht, unsigned long key) {
 
 }
 
+ght_ret_status_t ght_generate_key(unsigned long *key) {
+    struct tm * timeinfo;
+    time_t now = time(0);
+    timeinfo = localtime(&now);
+
+    unsigned long min_int = (unsigned long) timeinfo->tm_min;
+    unsigned long nanosec_val = get_time_in_nanosec();
+    nanosec_val = nanosec_val & 0x00FFFFFFFFFFFFFF;
+    nanosec_val += ((min_int & 0xFF) << 56);
+    *key = nanosec_val;
+
+    return GHT_SUCCESS;
+}
 
 
