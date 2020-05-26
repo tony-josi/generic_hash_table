@@ -6,7 +6,7 @@
 #include "inc/generic_hash_table.h"
 
 #define BASE_SIZE                   1087
-#define TEST_CASES                  30000
+#define TEST_CASES                  60000
 
 static unsigned long key_arr[TEST_CASES];
 static unsigned int key_arr_cntr = 0;
