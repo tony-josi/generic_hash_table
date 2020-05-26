@@ -1,5 +1,7 @@
 ### Generic Hash Table
 
+[**Documentation**](https://tonyjosi97.github.io/generic_hash_table/ght__core_8c.html)
+
 Hash Table implementation using [Open addressing](https://en.wikipedia.org/wiki/Open_addressing) & [Double hashing](https://en.wikipedia.org/wiki/Double_hashing) method.
 
 > Open addressing
