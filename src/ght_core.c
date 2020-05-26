@@ -16,6 +16,21 @@
 #include "../inc/generic_hash_table.h"
 #include "../inc/generic_hash_table_core_util.h"
 
+/**
+  * @brief  Initialize the hash table data structure.
+  * 
+  * @param  ht      Table UART handle.
+  * @param  base    Starting size of hash table.
+  * @param  Hash    Size of an item in the hash table.
+  * 
+  * @note   This procedure initialises the #g_hash_table_t pointer variable
+  *         with the base size and size of each of the element in the hash table.
+  *         Also, allocates memory for each #base number of elements. 
+  *         
+  * @retval Status:
+  *             - #GHT_SUCCESS Init success
+  *             _ #GHT_FAIL    Init failed
+*/
 ght_ret_status_t 
 ght_init(g_hash_table_t *ht, size_t base, size_t item_sz) {
 
