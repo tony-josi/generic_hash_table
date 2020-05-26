@@ -6,7 +6,7 @@
 #include "inc/generic_hash_table.h"
 
 #define BASE_SIZE                   1087
-#define TEST_CASES                  60000
+#define TEST_CASES                  4000
 
 static unsigned long key_arr[TEST_CASES];
 static unsigned int key_arr_cntr = 0;
@@ -82,7 +82,7 @@ int main() {
     if(ght_init(&test_htable, BASE_SIZE, sizeof(test_t)) != GHT_SUCCESS)
         printf("FAILED!\n");
 
-    while(cntr++ < TEST_CASES) {
+    while(cntr < TEST_CASES) {
 
         temp_test.id = RAND_GEN(1000);
         temp_test.val = (float) RAND_GEN(200);
@@ -103,6 +103,8 @@ int main() {
         else
             printf("______INSERTION GHT_FAIL: ITR: %d NOS-> %d KEY-> %ld DATA: ID-> %d Val-> %f\n", \
             cntr, insr_count, temp_key, temp_test.id, temp_test.val);
+
+        ++cntr;
 
     }
     printf("KEY_ARR_SIZE: %d\n", key_arr_cntr);
