@@ -16,20 +16,21 @@
 #include "../inc/generic_hash_table.h"
 #include "../inc/generic_hash_table_core_util.h"
 
+
 /**
   * @brief  Initialize the hash table data structure.
   * 
-  * @param  ht      Table UART handle.
-  * @param  base    Starting size of hash table.
-  * @param  Hash    Size of an item in the hash table.
+  * @param  [out] ht      Hash Table handle.
+  * @param  [in]  base    Starting size of hash table.
+  * @param  [in]  Hash    Size of an item in the hash table.
   * 
   * @note   This procedure initialises the #g_hash_table_t pointer variable
-  *         with the base size and size of each of the element in the hash table.
-  *         Also, allocates memory for each #base number of elements. 
+  *         with the base size and size of each of the item in the hash table.
+  *         Also, allocates memory for each #base number of items. 
   *         
   * @retval Status:
-  *             - #GHT_SUCCESS Init success
-  *             _ #GHT_FAIL    Init failed
+  *             - #GHT_SUCCESS  Init success
+  *             - #GHT_FAIL     Init failed
 */
 ght_ret_status_t 
 ght_init(g_hash_table_t *ht, size_t base, size_t item_sz) {
@@ -46,6 +47,25 @@ ght_init(g_hash_table_t *ht, size_t base, size_t item_sz) {
 
 }
 
+
+/**
+  * @brief  Inserts an item to the hash.
+  * 
+  * @param  [in] ht      Hash Table handle.
+  * @param  [in] key     Key value of the item.
+  * @param  [in] val     Pointer to the item to be inserted.
+  * 
+  * @note   This procedure inserts an item if and only if that
+  *         key doesnt already exist in the hash table. 
+  * 
+  * @note   Calculates the hash table fill density to decide whether 
+  *         scale the hash table size up.
+  *         
+  * @retval Status:
+  *             - #GHT_SUCCESS              Insert success
+  *             - #GHT_KEY_ALRDY_EXISTS     Key already exists insert failed
+  *             - #GHT_FAIL                 Init failed
+*/
 ght_ret_status_t 
 ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
 
@@ -100,6 +120,22 @@ ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
 
 }
 
+
+/**
+  * @brief  Searches if an item is in the hash table.
+  * 
+  * @param  [in]  ht      Hash Table handle.
+  * @param  [in]  key     Key value of the item.
+  * @param  [out] val     Index of the item in the hash table.
+  * 
+  * @note   This procedure searches for an item in the hash table and gives
+  *         index of that item in the hash table. 
+  * 
+  * @retval Status:
+  *             - #GHT_SUCCESS              Search success
+  *             - #GHT_ITEM_NOT_FOUND       Key not found in hash table
+  *             - #GHT_FAIL                 Search function failed
+*/
 ght_ret_status_t 
 ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_ptr) {
 
@@ -138,6 +174,18 @@ ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_ptr) {
 
 }
 
+/**
+  * @brief  De-initializes the handle to the hash table.
+  * 
+  * @param  [in] ht      Hash Table handle.
+  * 
+  * @note   This procedure De-initializes the handle of hash table and frees all 
+  *         allocated memory. 
+  * 
+  * @retval Status:
+  *             - #GHT_SUCCESS              De-initialize success
+  *             - #GHT_FAIL                 De-initialize function failed
+*/
 ght_ret_status_t 
 ght_deinit(g_hash_table_t *ht) {
 
@@ -163,6 +211,22 @@ ght_deinit(g_hash_table_t *ht) {
 
 
 
+/**
+  * @brief  Gets an item from the hash table.
+  * 
+  * @param  [in]  ht          Hash Table handle.
+  * @param  [in]  key         Key value of the item.
+  * @param  [out] ret_ptr     Pointer to the location to which 
+  *                           the item will be copied.
+  * 
+  * @note   This procedure searches for an item in the hash table and copies
+  *         the item to the given pointer location if present. 
+  * 
+  * @retval Status:
+  *             - #GHT_SUCCESS              Search success
+  *             - #GHT_ITEM_NOT_FOUND       Key not found in hash table
+  *             - #GHT_FAIL                 Search function failed
+*/
 ght_ret_status_t 
 ght_get(g_hash_table_t *ht, unsigned long key, void *ret_ptr) {
 
