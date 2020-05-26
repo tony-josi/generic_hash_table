@@ -223,9 +223,9 @@ ght_deinit(g_hash_table_t *ht) {
   *         the item to the given pointer location if present. 
   * 
   * @retval Status:
-  *             - #GHT_SUCCESS              Search success
-  *             - #GHT_ITEM_NOT_FOUND       Key not found in hash table
-  *             - #GHT_FAIL                 Search function failed
+  *             - #GHT_SUCCESS              Get success
+  *             - #GHT_EMPTY                Hash Table is empty
+  *             - #GHT_FAIL                 Get function failed
 */
 ght_ret_status_t 
 ght_get(g_hash_table_t *ht, unsigned long key, void *ret_ptr) {
@@ -239,6 +239,22 @@ ght_get(g_hash_table_t *ht, unsigned long key, void *ret_ptr) {
     return GHT_SUCCESS;
 }
 
+
+
+/**
+  * @brief  Deletes an item from the hash table.
+  * 
+  * @param  [in]  ht          Hash Table handle.
+  * @param  [in]  key         Key value of the item.
+  * 
+  * @note   This procedure searches for an item in the hash table and deletes
+  *         the item if present. 
+  * 
+  * @retval Status:
+  *             - #GHT_SUCCESS              Delete success
+  *             - #GHT_EMPTY                Hash Table is empty
+  *             - #GHT_FAIL                 Delete function failed
+*/
 ght_ret_status_t 
 ght_delete(g_hash_table_t *ht, unsigned long key) {
 
@@ -274,7 +290,22 @@ ght_delete(g_hash_table_t *ht, unsigned long key) {
 
 }
 
-ght_ret_status_t ght_generate_key(unsigned long *key) {
+
+
+/**
+  * @brief  Generates a unique key based on system time.
+  * 
+  * @param  [out]  ht          Pointer to the key location.
+  * 
+  * @note   This procedure generates a uinique and time based 
+  *         (2 keys distinguished, on which is latest) key that can be used
+  *         as the hash key, if required. 
+  * 
+  * @retval Status:
+  *             - #GHT_SUCCESS              Delete success
+*/
+ght_ret_status_t 
+ght_generate_key(unsigned long *key) {
     struct tm * timeinfo;
     time_t now = time(0);
     timeinfo = localtime(&now);
