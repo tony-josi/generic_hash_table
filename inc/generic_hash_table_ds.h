@@ -1,3 +1,14 @@
+/** 
+ *  @file   generic_hash_table_ds.h
+ *  @brief  Header file for data structure defs used for the Hash Table 
+ *
+ *  This contains the Header file for data structure 
+ *  defs used for the Hash Table 
+ *
+ *  @author Tony Josi   https://tjosi.000webhostapp.com/
+ *  @bug No known bugs.
+ */
+
 #ifndef _GENERIC_HT_DS_H
 #define _GENERIC_HT_DS_H
 

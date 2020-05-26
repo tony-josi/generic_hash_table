@@ -1,3 +1,14 @@
+/** 
+ *  @file   generic_hash_table.h
+ *  @brief  Master Header file for Hash Table Library
+ *
+ *  This contains the Header file for data structure & basic funcs.
+ *  defs used for the Hash Table library
+ *
+ *  @author Tony Josi   https://tjosi.000webhostapp.com/
+ *  @bug No known bugs.
+ */
+
 #ifndef _GENERIC_HASH_TABLE_H
 #define _GENERIC_HASH_TABLE_H
 

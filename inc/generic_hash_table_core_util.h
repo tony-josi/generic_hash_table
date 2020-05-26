@@ -1,3 +1,14 @@
+/** 
+ *  @file   generic_hash_table_core_util.h
+ *  @brief  Header file for utility functions source
+ *
+ *  This contains the Header file for utility functions source
+ *
+ *  @author Tony Josi   https://tjosi.000webhostapp.com/
+ *  @bug No known bugs.
+ */
+
+
 #ifndef _GENERIC_HASH_TABLE_CORE_UTIL_H
 #define _GENERIC_HASH_TABLE_CORE_UTIL_H
 

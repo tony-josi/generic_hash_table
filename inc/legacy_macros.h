@@ -1,3 +1,13 @@
+/** 
+ *  @file   legacy_macros.h
+ *  @brief  Usual utility legacy file
+ *
+ *  This contains the Header file for usual utility legacy file
+ *
+ *  @author Tony Josi   https://tjosi.000webhostapp.com/
+ *  @bug No known bugs.
+ */
+
 #ifndef _LEGACY_MACROS_H
 #define _LEGACY_MACROS_H
 
