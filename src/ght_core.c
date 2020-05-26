@@ -1,3 +1,13 @@
+/** 
+ *  @file   ght_core.c
+ *  @brief  Library function defintions
+ *
+ *  This contains the Library function defintions
+ *
+ *  @author Tony Josi   https://tjosi.000webhostapp.com/
+ *  @bug No known bugs.
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>

@@ -1,3 +1,13 @@
+/** 
+ *  @file   ght_core_util.c
+ *  @brief  Utility function definitions for Hash Table Library
+ *
+ *  This contains the Utility function definitions for Hash Table Library
+ *
+ *  @author Tony Josi   https://tjosi.000webhostapp.com/
+ *  @bug No known bugs.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
