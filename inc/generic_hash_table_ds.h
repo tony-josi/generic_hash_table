@@ -15,28 +15,40 @@
 #include <stddef.h> 
 
 typedef enum {
-    GHT_SUCCESS = 0,
-    GHT_KEY_ALRDY_EXISTS,
-    GHT_EMPTY,
-    GHT_ITEM_NOT_FOUND,
-    GHT_INVALID_PARAMS,
-    GHT_FAIL
+    GHT_SUCCESS = 0,        /*!< GHT Function success */
+    GHT_KEY_ALRDY_EXISTS,   /*!< GHT Key Already exists */
+    GHT_EMPTY,              /*!< GHT Hash table empty */
+    GHT_ITEM_NOT_FOUND,     /*!< GHT Item is not present in hash table */
+    GHT_INVALID_PARAMS,     /*!< GHT Invalid function params */
+    GHT_FAIL                /*!< GHT Function Fail */
 } ght_ret_status_t;
 
+/**
+ * @struct  ght_item_t
+ * @brief   GHT basic item type
+ *
+ * Basic structure containing the feilds for an item in the hash table
+ */
 typedef struct _ght_item {
 
-    unsigned long       key;
-    void               *val_ptr;
+    unsigned long       key;        /*!< Key of the item */
+    void               *val_ptr;    /*!< Pointer to the item record */
 
 } ght_item_t;
 
+/**
+ * @struct  g_hash_table_t
+ * @brief   GHT handle type
+ *
+ * Basic structure holding all the feilds related to the specific hash table
+ */
 typedef struct _g_hash_table {
 
-    size_t              base_capacity;
-    size_t              capacity;
-    size_t              item_size;
-    size_t              count;
-    ght_item_t        **items;
+    size_t              base_capacity;      /*!< Base capacity of Hash Table */
+    size_t              capacity;           /*!< Current capacity of Hash Table */
+    size_t              item_size;          /*!< Size of an item in Hash Table */
+    size_t              count;              /*!< Current count items in Hash Table */
+    ght_item_t        **items;              /*!< Pointer to the items memory of Hash Table */
 
 } g_hash_table_t;
 
