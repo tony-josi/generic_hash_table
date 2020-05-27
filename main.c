@@ -79,6 +79,8 @@ int main() {
     unsigned int cntr = 0, insr_count = 0, retr_count = 0;
     ght_ret_status_t ret_code;
 
+    clock_t begin = clock();
+
     if(ght_init(&test_htable, BASE_SIZE, sizeof(test_t)) != GHT_SUCCESS)
         printf("FAILED!\n");
 
@@ -132,7 +134,10 @@ int main() {
         return EXIT_FAILURE;
     }
     else {
+        clock_t end = clock();
+        double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
         printf("DE INIT SUCCESS!\n");
+        printf("Execution time: %f\n", time_spent);
         return EXIT_SUCCESS;
     }
     
