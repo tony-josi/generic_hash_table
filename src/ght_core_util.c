@@ -87,7 +87,7 @@ __ght_core_util_get_hash(const unsigned long key, const unsigned long capacity, 
 
     const unsigned long first_hash = hash_func_1(key, capacity);
     const unsigned long second_hash = hash_func_2(key);
-    return ((first_hash + (chain_degreee * second_hash) + 1) % capacity);
+    return ((first_hash + (chain_degreee * second_hash)) % capacity);
 
 }
 

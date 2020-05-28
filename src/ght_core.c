@@ -147,9 +147,15 @@ ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_ptr) {
     printf("Return Hashes: %ld", index);
 #endif /* PRINT_LOG */
 
-    while(((ht->items[index]) != NULL) && (((*ht->items[index]).key) != key)) {
+    while(1) {
 
-        if(++chain_len >= ht->capacity)
+        if(((ht->items[index]) != NULL) && (((*ht->items[index]).key) != key)) {
+            *ret_ptr = index;
+            return GHT_SUCCESS;
+        }
+
+        ++chain_len;
+        if(chain_len >= ht->count)
             return GHT_ITEM_NOT_FOUND;
 
         index = \
@@ -164,11 +170,6 @@ ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_ptr) {
 #if PRINT_LOG
     printf("\n");
 #endif /* PRINT_LOG */
-
-    if(ht->items[index] != NULL) {
-        *ret_ptr = index;
-        return GHT_SUCCESS;
-    }
 
     return GHT_FAIL;
 
@@ -258,6 +259,8 @@ ght_get(g_hash_table_t *ht, unsigned long key, void *ret_ptr) {
 ght_ret_status_t 
 ght_delete(g_hash_table_t *ht, unsigned long key) {
 
+    ght_ret_status_t retcode;
+
     unsigned int ht_density = (ht->count * 100) / ht->capacity;
     if((ht->capacity != ht->base_capacity) && (ht_density < SCALE_DOWN_THRESHOLD)) {
         if(__ght_core_util_scale_down(ht) != GHT_SUCCESS)
@@ -272,8 +275,10 @@ ght_delete(g_hash_table_t *ht, unsigned long key) {
 
     if(ht->count > 0) {
 
-        if(ght_search(ht, key, &index) != GHT_SUCCESS)
-            return GHT_FAIL;
+        if((retcode = ght_search(ht, key, &index)) != GHT_SUCCESS) {
+            printf("Delete_search_fail_stat: %d\n", retcode);
+            return GHT_ITEM_NOT_FOUND;
+        }
 
         if(__ght_core_util_item_deinit(&(ht->items[index])) != GHT_SUCCESS)
             return GHT_FAIL;

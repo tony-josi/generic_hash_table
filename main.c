@@ -6,7 +6,8 @@
 #include "inc/generic_hash_table.h"
 
 #define BASE_SIZE                   1087
-#define TEST_CASES                  4000
+#define TEST_CASES                  100
+#define NO_OF_DELETES               40
 
 static unsigned long key_arr[TEST_CASES];
 static unsigned int key_arr_cntr = 0;
@@ -17,11 +18,12 @@ typedef struct _test_struct {
 } test_t;
 
 
-#if 0
+#if 1
 int main() {
 
     g_hash_table_t test_htable;
     test_t temp_test, temp_test_ret;
+    ght_ret_status_t ret_code;
     unsigned long temp_key;
     if(ght_init(&test_htable, BASE_SIZE, sizeof(test_t)) != GHT_SUCCESS)
         printf("FAILED!\n");
@@ -37,16 +39,20 @@ int main() {
 
         printf("Data: %d     %f\n", temp_test.id, temp_test.val);
 
-        if(t_case_cntr == 1000) {
+        if(t_case_cntr == 50) {
             printf("DELETE_BIGNS\n");
             for(unsigned int titr = 0; (titr < NO_OF_DELETES) && (titr < key_arr_cntr); ++titr) {
-                if(ght_delete(&test_htable, key_arr[titr]) != GHT_SUCCESS)
-                    printf("DELETE_FAIL\n");
+                printf("Deleting: %ld, size: %ld\n", key_arr[titr], test_htable.capacity);
+                if((ret_code = ght_delete(&test_htable, key_arr[titr])) != GHT_SUCCESS)
+                    printf("DELETE_FAIL: %d\n", ret_code);
+                printf("\n\n\n");
             } 
         }
         
         if(ght_insert(&test_htable, temp_key, (void *)&temp_test) == GHT_SUCCESS) {
+            printf("Key_inserted: %ld, size: %ld\n", temp_key, test_htable.capacity);
             if(key_arr_cntr < NO_OF_DELETES) {
+                printf("For_deletion: %ld\n", temp_key);
                 key_arr[key_arr_cntr] = temp_key;
                 key_arr_cntr++;
             }
@@ -69,7 +75,7 @@ int main() {
 }
 #endif /* main */
 
-#if 1 /* test main */
+#if 0 /* test main */
 
 int main() {
 
