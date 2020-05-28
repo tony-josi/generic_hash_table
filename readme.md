@@ -44,3 +44,13 @@ However, it is said to be O(1) average and amortized case because:
 * It is very rare that many items will be hashed to the same key [if you chose a good hash function and you don't have too big load balance.
 
 The rehash operation, which is O(n), can at most happen after n/2 ops, which are all assumed O(1): Thus when you sum the average time per op, you get : (n*O(1) + O(n)) / n) = O(1)
+
+### Simple Hash Table Deletion Algorithm
+
+[src](https://stackoverflow.com/a/4396158/6792356)
+
+Find and remove the desired element:
+* Go to the next bucket
+* If the bucket is empty, quit
+* If the bucket is full, delete the element in that bucket and re-add it to the hash table using the normal means. The item must be removed before re-adding, because it is likely that the item could be added back into its original spot.
+* Repeat step 2.
