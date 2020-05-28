@@ -17,4 +17,4 @@ Hash Table implementation using [Open addressing](https://en.wikipedia.org/wiki/
 Tested with 1 million records
 
 #### TO DO:
-* make memcpy to memcpy_s
+* Make memcpy to memcpy_s
