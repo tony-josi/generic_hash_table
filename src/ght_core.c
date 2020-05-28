@@ -147,9 +147,14 @@ ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_ptr) {
     printf("Return Hashes: %ld", index);
 #endif /* PRINT_LOG */
 
-    while(((ht->items[index]) != NULL) && (((*ht->items[index]).key) != key)) {
+    while(1) {
 
-        if(++chain_len >= ht->capacity)
+        if(((ht->items[index]) != NULL) && (((*ht->items[index]).key) == key)) {
+            *ret_ptr = index;
+            return GHT_SUCCESS;
+        }
+
+        if((++chain_len) >= ht->capacity)
             return GHT_ITEM_NOT_FOUND;
 
         index = \
@@ -164,11 +169,6 @@ ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_ptr) {
 #if PRINT_LOG
     printf("\n");
 #endif /* PRINT_LOG */
-
-    if(ht->items[index] != NULL) {
-        *ret_ptr = index;
-        return GHT_SUCCESS;
-    }
 
     return GHT_FAIL;
 
