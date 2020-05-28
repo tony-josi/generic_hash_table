@@ -7,9 +7,9 @@
 
 #define BASE_SIZE                   1087
 #define TEST_CASES                  400
-
+/* 
 static unsigned long key_arr[TEST_CASES];
-static unsigned int key_arr_cntr = 0;
+static unsigned int key_arr_cntr = 0; */
 
 typedef struct _test_struct {
     int id;
@@ -67,9 +67,7 @@ int main() {
     
     return EXIT_SUCCESS;
 }
-#endif /* main */
 
-#if 1 /* test main */
 
 int main() {
 
@@ -148,3 +146,49 @@ int main() {
 
 
 #endif
+
+int main()
+{
+    g_hash_table_t ht;
+    unsigned long insert_tracker[TEST_CASES];
+    int insert_tracker_cntr = 0;
+    if(ght_init(&ht, BASE_SIZE, sizeof(test_t)) != GHT_SUCCESS) {
+        printf("INIT_FAILED");
+        return -1;
+    }
+
+    /* insertion */
+    unsigned long key;
+    test_t sample_data;
+    for(int itr = 0; itr < TEST_CASES; ++itr) {
+        key = RAND_GEN(400000);
+        sample_data.id = RAND_GEN(100000);
+        sample_data.val = (float) RAND_GEN(100000);
+
+        if(ght_insert(&ht, key, &sample_data) != GHT_SUCCESS) {
+            printf("INSERT_FAILED");
+            return -1;
+        }
+        printf("Inserted: key-> %ld, sample_data: id-> %d val -> %f\n", key, sample_data.id, sample_data.val);
+        insert_tracker[insert_tracker_cntr++] = key;
+    }
+
+
+    /* Deletion */
+    for(int itr = 0; itr < insert_tracker_cntr; ++itr) {
+        if(ght_delete(&ht, insert_tracker[itr]) != GHT_SUCCESS) {
+            printf("DELETE_FAILED");
+            return -1;
+        }
+        printf("Deleted: key->%ld\n", insert_tracker[itr]);
+    }
+
+
+    if(ght_deinit(&ht) != GHT_SUCCESS) {
+        printf("DEINIT_FAILED");
+        return -1;
+    }
+    /* code */
+    return 0;
+}
+
