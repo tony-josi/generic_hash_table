@@ -149,6 +149,7 @@ int main() {
 
 int main()
 {
+    srand(time(0)); 
     g_hash_table_t ht;
     unsigned long insert_tracker[TEST_CASES];
     int insert_tracker_cntr = 0;
@@ -173,13 +174,27 @@ int main()
         insert_tracker[insert_tracker_cntr++] = key;
     }
 
-
+    
     /* Deletion */
+#if 0
+    int temp_index;
+    for(int itr = 0; itr < insert_tracker_cntr; ++itr) {
+        temp_index = RAND_GEN(insert_tracker_cntr);
+        if(insert_tracker[temp_index] != 0) {
+            if(ght_delete(&ht, insert_tracker[temp_index]) != GHT_SUCCESS) {
+                printf("DELETE_FAILED");
+                return -1;
+            }
+            insert_tracker[insert_tracker_cntr] = 0;
+            printf("Deleted: key->%ld\n", insert_tracker[itr]);
+        }
+    }
+#endif
     for(int itr = 0; itr < insert_tracker_cntr; ++itr) {
         if(ght_delete(&ht, insert_tracker[itr]) != GHT_SUCCESS) {
-            printf("DELETE_FAILED");
-            return -1;
-        }
+                printf("DELETE_FAILED");
+                return -1;
+            }
         printf("Deleted: key->%ld\n", insert_tracker[itr]);
     }
 
