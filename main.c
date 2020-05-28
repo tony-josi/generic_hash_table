@@ -76,7 +76,7 @@ int main() {
     g_hash_table_t test_htable;
     test_t temp_test, temp_test_ret = {0, 0.0};
     unsigned long temp_key;
-    unsigned int cntr = 0, insr_count = 0, retr_count = 0;
+    int cntr = 0, insr_count = 0, retr_count = 0;
     ght_ret_status_t ret_code;
 
     clock_t begin = clock();
@@ -111,7 +111,7 @@ int main() {
     }
     printf("KEY_ARR_SIZE: %d\n", key_arr_cntr);
     cntr = key_arr_cntr - 1;
-    while(cntr >= 0) {
+    while(cntr > 0) {
 
         ret_code = ght_get(&test_htable, key_arr[cntr], (void *)&temp_test_ret);
         if(ret_code == GHT_SUCCESS) {
