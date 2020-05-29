@@ -50,8 +50,8 @@ The rehash operation, which is O(n), can at most happen after n/2 ops, which are
 [src](https://stackoverflow.com/a/4396158/6792356)
 
 Find and remove the desired element:
-1 Find and remove the desired element.
-2 Go to the next bucket
-3 If the bucket is empty, quit
-4 If the bucket is full, delete the element in that bucket and re-add it to the hash table using the normal means. The item must be removed before re-adding, because it is likely that the item could be added back into its original spot.
-5 Repeat step 2.
+1. Find and remove the desired element.
+2. Go to the next bucket
+3. If the bucket is empty, quit
+4. If the bucket is full, delete the element in that bucket and re-add it to the hash table using the normal means. The item must be removed before re-adding, because it is likely that the item could be added back into its original spot.
+5. Repeat step 2.
