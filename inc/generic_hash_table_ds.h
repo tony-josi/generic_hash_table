@@ -13,6 +13,7 @@
 #define _GENERIC_HT_DS_H
 
 #include <stddef.h> 
+#include <stdbool.h>
 
 typedef enum {
     GHT_SUCCESS = 0,        /*!< GHT Function success */
@@ -32,6 +33,7 @@ typedef enum {
 typedef struct _ght_item {
 
     unsigned long       key;        /*!< Key of the item */
+    bool                is_active;
     void               *val_ptr;    /*!< Pointer to the item record */
 
 } ght_item_t;
@@ -48,7 +50,7 @@ typedef struct _g_hash_table {
     size_t              capacity;           /*!< Current capacity of Hash Table */
     size_t              item_size;          /*!< Size of an item in Hash Table */
     size_t              count;              /*!< Current count items in Hash Table */
-    ght_item_t        **items;              /*!< Pointer to the items memory of Hash Table */
+    ght_item_t         *items;              /*!< Pointer to the items memory of Hash Table */
 
 } g_hash_table_t;
 
