@@ -242,7 +242,7 @@ ght_get(g_hash_table_t *ht, unsigned long key, void *ret_ptr) {
         return ret_code;
 
     if(!memcpy(ret_ptr, ht->items[index].val_ptr, ht->item_size)) {
-        perror("    ERR: __ght_core_util_item_init(): memcpy()");
+        perror("    ERR: ght_get(): memcpy()");
         return GHT_FAIL;
     }
     return GHT_SUCCESS;
