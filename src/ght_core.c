@@ -79,15 +79,16 @@ ght_init(g_hash_table_t *ht, size_t base, size_t item_sz) {
 ght_ret_status_t 
 ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
 
-    unsigned int ht_density = (ht->count * 100) / ht->capacity;
+/*     unsigned int ht_density = (ht->count * 100) / ht->capacity;
     if(ht_density > SCALE_UP_THRESHOLD) {
         if(__ght_core_util_scale_up(ht) != GHT_SUCCESS) 
             return GHT_FAIL;
+ */
 
-#if PRINT_LOG
+/* #if PRINT_LOG
         printf("Scale Up: %ld   Prev Denisty: %d\n", ht->capacity, ht_density);
-#endif /* PRINT_LOG */
-    }
+#endif  *//* PRINT_LOG */
+    //}
 
     size_t prev_index;
     if(ght_search(ht, key, &prev_index) == GHT_SUCCESS) {
@@ -298,7 +299,7 @@ ght_delete(g_hash_table_t *ht, unsigned long key) {
 
 }
 
-
+#endif
 
 /**
   * @brief  Generates a unique key based on system time.
@@ -327,4 +328,4 @@ ght_generate_key(unsigned long *key) {
     return GHT_SUCCESS;
 }
 
-#endif
+

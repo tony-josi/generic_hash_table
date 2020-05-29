@@ -6,7 +6,7 @@
 #include "inc/generic_hash_table.h"
 
 #define BASE_SIZE                   1087
-#define TEST_CASES                  4000
+#define TEST_CASES                  400
 
 /* static unsigned long key_arr[TEST_CASES];
 static unsigned int key_arr_cntr = 0; */
@@ -15,6 +15,47 @@ typedef struct _test_struct {
     int id;
     float val;
 } test_t;
+
+
+int main()
+{
+    srand(time(0)); 
+    UNUSED(RAND_GEN(100));
+    g_hash_table_t ht;
+    ght_ret_status_t ret_code;
+    test_t temp_var;
+    unsigned long temp_key;
+
+    if(ght_init(&ht, BASE_SIZE, sizeof(test_t)) != GHT_SUCCESS) {
+        printf("Init Failed\n");
+    }
+
+    for(unsigned int itr = 0 ; itr < TEST_CASES; ++itr) {
+        ght_generate_key(&temp_key); 
+        temp_var.id = RAND_GEN(40000);
+        temp_var.val = (float) RAND_GEN(80000);
+        if((ret_code = ght_insert(&ht, temp_key, &temp_var)) != GHT_SUCCESS)
+            printf("Insert Error -> E_CODE: %d\n", ret_code);
+        else
+            printf("Insterted data: Key -> %ld, Data 1st: %d 2nd: %f\n", temp_key, temp_var.id, temp_var.val);
+
+        temp_var.id = 0;
+        temp_var.val = 0.0;
+
+        if((ret_code = ght_get(&ht, temp_key, &temp_var)) != GHT_SUCCESS)
+            printf("Insert Error -> E_CODE: %d\n", ret_code);
+        else
+            printf("Got data: Key -> %ld, Data 1st: %d 2nd: %f\n", temp_key, temp_var.id, temp_var.val);
+
+        printf("\n\n\n");
+    }
+
+    if(ght_deinit(&ht) != GHT_SUCCESS) {
+        printf("Init Failed\n");
+    }
+    
+    return 0;
+}
 
 
 #if 0
@@ -149,9 +190,5 @@ int main() {
 
 #endif
 
-int main()
-{
-    
-    return 0;
-}
+
 

@@ -148,10 +148,12 @@ __ght_core_util_scale_down(g_hash_table_t *ht) {
     return GHT_SUCCESS;
 }
 
+#endif
+
 unsigned long 
 get_time_in_nanosec(void) {
     struct timespec ts;
     timespec_get(&ts, TIME_UTC);
     return (unsigned long)ts.tv_sec * 1000000000L + ts.tv_nsec;
 }
-#endif
+
