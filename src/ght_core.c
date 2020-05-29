@@ -184,6 +184,8 @@ ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_ptr) {
 
 }
 
+#endif
+
 /**
   * @brief  De-initializes the handle to the hash table.
   * 
@@ -200,17 +202,9 @@ ght_ret_status_t
 ght_deinit(g_hash_table_t *ht) {
 
     if(ht->items) {
-        for(size_t i = 0; i < ht->capacity; i++) {
-            if(ht->items[i] != NULL) {
 
-#if PRINT_LOG
-                printf("_____________Deinit: %ld\n", i);
-#endif /* PRINT_LOG */
-
-                if(__ght_core_util_item_deinit(&(ht->items[i])) != GHT_SUCCESS)
-                    return GHT_FAIL;
-            }
-        }
+        if(ht->items[0].val_ptr) 
+            free(ht->items[0].val_ptr);
     
         free(ht->items);
         return GHT_SUCCESS;
@@ -219,7 +213,7 @@ ght_deinit(g_hash_table_t *ht) {
     return GHT_FAIL;
 }
 
-
+#if 0
 
 /**
   * @brief  Gets an item from the hash table.
