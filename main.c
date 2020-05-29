@@ -8,9 +8,6 @@
 #define BASE_SIZE                   1087
 #define TEST_CASES                  400
 
-/* static unsigned long key_arr[TEST_CASES];
-static unsigned int key_arr_cntr = 0; */
-
 typedef struct _test_struct {
     int id;
     float val;
