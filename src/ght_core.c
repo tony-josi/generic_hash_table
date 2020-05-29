@@ -110,6 +110,9 @@ ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
 
     while((ht->items[index].is_active) != false) {
         ++chain_len;
+        if(chain_len == (ht->capacity - 1))
+            return GHT_ITEM_NOT_FOUND;
+
         index = \
         (size_t) __ght_core_util_get_hash(key, (unsigned long) ht->capacity, chain_len);
 

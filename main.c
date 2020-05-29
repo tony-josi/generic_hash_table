@@ -6,7 +6,7 @@
 #include "inc/generic_hash_table.h"
 
 #define BASE_SIZE                   199
-#define TEST_CASES                  150
+#define TEST_CASES                  200
 
 typedef struct _test_struct {
     int id;
@@ -40,7 +40,7 @@ int main()
         temp_var.val = 0.0;
 
         if((ret_code = ght_get(&ht, temp_key, &temp_var)) != GHT_SUCCESS)
-            printf("Insert Error -> E_CODE: %d\n", ret_code);
+            printf("Get Error -> E_CODE: %d\n", ret_code);
         else
             printf("Got data: Key -> %ld, Data 1st: %d 2nd: %f\n", temp_key, temp_var.id, temp_var.val);
 
