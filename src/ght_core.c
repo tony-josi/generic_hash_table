@@ -129,7 +129,6 @@ ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
     return GHT_SUCCESS;
 
 }
-#if 0
 
 /**
   * @brief  Searches if an item is in the hash table.
@@ -157,9 +156,10 @@ ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_ptr) {
     printf("Return Hashes: %ld", index);
 #endif /* PRINT_LOG */
 
-    while(((ht->items[index]) != NULL) && (((*ht->items[index]).key) != key)) {
+    while((ht->items[index].is_active == true) && (ht->items[index].key != key)) {
 
-        if(++chain_len >= ht->capacity)
+        ++chain_len;
+        if(chain_len == ht->capacity)
             return GHT_ITEM_NOT_FOUND;
 
         index = \
@@ -175,7 +175,7 @@ ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_ptr) {
     printf("\n");
 #endif /* PRINT_LOG */
 
-    if(ht->items[index] != NULL) {
+    if(ht->items[index].is_active == true) {
         *ret_ptr = index;
         return GHT_SUCCESS;
     }
@@ -184,7 +184,7 @@ ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_ptr) {
 
 }
 
-#endif
+
 
 /**
   * @brief  De-initializes the handle to the hash table.
