@@ -8,8 +8,8 @@
 #define BASE_SIZE                   1087
 #define TEST_CASES                  4000
 
-static unsigned long key_arr[TEST_CASES];
-static unsigned int key_arr_cntr = 0;
+/* static unsigned long key_arr[TEST_CASES];
+static unsigned int key_arr_cntr = 0; */
 
 typedef struct _test_struct {
     int id;
@@ -69,7 +69,7 @@ int main() {
 }
 #endif /* main */
 
-#if 1 /* test main */
+#if 0 /* test main */
 
 int main() {
 
@@ -148,3 +148,10 @@ int main() {
 
 
 #endif
+
+int main()
+{
+    
+    return 0;
+}
+

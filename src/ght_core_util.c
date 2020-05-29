@@ -20,12 +20,14 @@
 #include "../inc/generic_hash_table_ds.h"
 #include "../inc/generic_hash_table_core_util.h"
 
+#if 0
+
 static unsigned long    hash_func_1(const unsigned long, const unsigned long);
 static unsigned long    hash_func_2(const unsigned long);
 static unsigned int     check_if_prime(unsigned int);
 static unsigned int     get_next_prime(unsigned int);
 
-#if 0
+
 ght_ret_status_t 
 __ght_core_util_item_init(ght_item_t **item, unsigned long key, void *val, size_t size) {
 
