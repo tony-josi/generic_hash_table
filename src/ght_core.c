@@ -213,7 +213,7 @@ ght_deinit(g_hash_table_t *ht) {
     return GHT_FAIL;
 }
 
-#if 0
+
 
 /**
   * @brief  Gets an item from the hash table.
@@ -235,15 +235,19 @@ ght_ret_status_t
 ght_get(g_hash_table_t *ht, unsigned long key, void *ret_ptr) {
 
     size_t index;
+    ght_ret_status_t ret_code;
 
-    if(ght_search(ht, key, &index) != GHT_SUCCESS)
+    if((ret_code = ght_search(ht, key, &index)) != GHT_SUCCESS)
+        return ret_code;
+
+    if(!memcpy(ret_ptr, ht->items[index].val_ptr, ht->item_size)) {
+        perror("    ERR: __ght_core_util_item_init(): memcpy()");
         return GHT_FAIL;
-
-    memcpy(ret_ptr, (*(ht->items[index])).val_ptr, ht->item_size);
+    }
     return GHT_SUCCESS;
 }
 
-
+#if 0
 
 /**
   * @brief  Deletes an item from the hash table.
