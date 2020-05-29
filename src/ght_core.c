@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
+#include <stdint.h>
 
 #include "../inc/generic_hash_table.h"
 #include "../inc/generic_hash_table_core_util.h"
@@ -40,14 +41,23 @@ ght_init(g_hash_table_t *ht, size_t base, size_t item_sz) {
     ht->item_size = item_sz;
     ht->count = 0;
     if((ht->items = \
-    (ght_item_t **) calloc(ht->capacity, sizeof(ght_item_t *)))  == NULL)
+    (ght_item_t *) calloc(ht->capacity, sizeof(ght_item_t)))  == NULL)
         return GHT_FAIL;
+
+    uint8_t *alloc_mem = NULL;
+    if((alloc_mem = malloc(ht->item_size * ht->capacity)) == NULL)
+        return GHT_FAIL;
+
+    for(unsigned int itr = 0; itr < ht->capacity; ++itr) {
+        ht->items[itr].is_active = false;
+        ht->items[itr].val_ptr = (void *) (alloc_mem + (ht->item_size * itr)); 
+    }
 
     return GHT_SUCCESS;
 
 }
 
-
+#if 0
 /**
   * @brief  Inserts an item to the hash.
   * 
@@ -319,4 +329,4 @@ ght_generate_key(unsigned long *key) {
     return GHT_SUCCESS;
 }
 
-
+#endif

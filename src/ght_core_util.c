@@ -25,6 +25,7 @@ static unsigned long    hash_func_2(const unsigned long);
 static unsigned int     check_if_prime(unsigned int);
 static unsigned int     get_next_prime(unsigned int);
 
+#if 0
 ght_ret_status_t 
 __ght_core_util_item_init(ght_item_t **item, unsigned long key, void *val, size_t size) {
 
@@ -167,4 +168,4 @@ get_time_in_nanosec(void) {
     timespec_get(&ts, TIME_UTC);
     return (unsigned long)ts.tv_sec * 1000000000L + ts.tv_nsec;
 }
-
+#endif
