@@ -14,8 +14,8 @@
 
 #include "./generic_hash_table_ds.h"
 
-ght_ret_status_t __ght_core_util_item_init(ght_item_t **, unsigned long, void *, size_t);
-ght_ret_status_t __ght_core_util_item_deinit(ght_item_t **);
+ght_ret_status_t __ght_core_util_item_init(ght_item_t *, unsigned long, void *, size_t);
+ght_ret_status_t __ght_core_util_item_deinit(ght_item_t *);
 unsigned long    __ght_core_util_get_hash(const unsigned long, const unsigned long, unsigned int);
 ght_ret_status_t __ght_core_util_resize(g_hash_table_t *, size_t);
 ght_ret_status_t __ght_core_util_scale_up(g_hash_table_t *);

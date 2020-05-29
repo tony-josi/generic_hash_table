@@ -57,7 +57,7 @@ ght_init(g_hash_table_t *ht, size_t base, size_t item_sz) {
 
 }
 
-#if 0
+
 /**
   * @brief  Inserts an item to the hash.
   * 
@@ -107,7 +107,7 @@ ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
     printf("Hashes: %ld", index);
 #endif /* PRINT_LOG */
 
-    while((ht->items[index]) != NULL) {
+    while((ht->items[index].is_active) != false) {
         ++chain_len;
         index = \
         (size_t) __ght_core_util_get_hash(key, (unsigned long) ht->capacity, chain_len);
@@ -122,14 +122,14 @@ ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
     printf("\n");
 #endif /* PRINT_LOG */
 
-    if(__ght_core_util_item_init(&(ht->items[index]), key, val, ht->item_size) != GHT_SUCCESS)
+    if(__ght_core_util_item_init(&ht->items[index], key, val, ht->item_size) != GHT_SUCCESS)
         return GHT_FAIL;
 
     ht->count += 1;
     return GHT_SUCCESS;
 
 }
-
+#if 0
 
 /**
   * @brief  Searches if an item is in the hash table.

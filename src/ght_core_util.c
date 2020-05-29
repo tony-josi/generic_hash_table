@@ -20,7 +20,7 @@
 #include "../inc/generic_hash_table_ds.h"
 #include "../inc/generic_hash_table_core_util.h"
 
-#if 0
+
 
 static unsigned long    hash_func_1(const unsigned long, const unsigned long);
 static unsigned long    hash_func_2(const unsigned long);
@@ -29,16 +29,12 @@ static unsigned int     get_next_prime(unsigned int);
 
 
 ght_ret_status_t 
-__ght_core_util_item_init(ght_item_t **item, unsigned long key, void *val, size_t size) {
+__ght_core_util_item_init(ght_item_t *item, unsigned long key, void *val, size_t size) {
 
-    *item = malloc(sizeof(ght_item_t));
-    (*item)->key = key;
-    if(((*item)->val_ptr = malloc(size)) == NULL) {
-        perror("    ERR: __ght_core_util_item_init(): malloc()");
-        return GHT_FAIL;
-    }
-    
-    if(!memcpy((*item)->val_ptr, val, size)) {
+    item->is_active = true;
+    item->key = key;
+
+    if(!memcpy(item->val_ptr, val, size)) {
         perror("    ERR: __ght_core_util_item_init(): memcpy()");
         return GHT_FAIL;
     }
@@ -46,33 +42,19 @@ __ght_core_util_item_init(ght_item_t **item, unsigned long key, void *val, size_
     return GHT_SUCCESS;
 }
 
-ght_ret_status_t 
-__ght_core_util_item_deinit(ght_item_t **item) {
-    
-    if(*item) {
-        if((*item)->val_ptr)
-            free((*item)->val_ptr);
-        else 
-            perror("    ERR: __ght_core_util_item_deinit(): passing NULL to free(item->val_ptr)");
 
-        free((*item));
-        *item = NULL;
-    }
-    else {
-        perror("    ERR: __ght_core_util_item_deinit(): passing NULL to free(item)");
-        return GHT_FAIL;
-    }
+
+ght_ret_status_t 
+__ght_core_util_item_deinit(ght_item_t *item) {
+    
+    item->is_active = false;
 
     return GHT_SUCCESS;
 }
 
 unsigned long 
 hash_func_1(const unsigned long key, const unsigned long m) {
-    
-    unsigned long x = key;
-    x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
-    x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
-    x = x ^ (x >> 31);
+
     return (key % m);
 
 }
@@ -90,9 +72,11 @@ __ght_core_util_get_hash(const unsigned long key, const unsigned long capacity, 
 
     const unsigned long first_hash = hash_func_1(key, capacity);
     const unsigned long second_hash = hash_func_2(key);
-    return ((first_hash + (chain_degreee * second_hash) + 1) % capacity);
+    return ((first_hash + (chain_degreee * second_hash)) % capacity);
 
 }
+
+#if 0
 
 unsigned int 
 check_if_prime(unsigned int num) {
