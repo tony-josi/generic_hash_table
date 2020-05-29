@@ -76,7 +76,7 @@ __ght_core_util_get_hash(const unsigned long key, const unsigned long capacity, 
 
 }
 
-#if 0
+
 
 unsigned int 
 check_if_prime(unsigned int num) {
@@ -101,6 +101,8 @@ get_next_prime(unsigned int base) {
 
     return base;
 }
+
+#if 0
 
 ght_ret_status_t 
 __ght_core_util_resize(g_hash_table_t *ht, size_t size_estimate) {
