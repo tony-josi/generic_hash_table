@@ -5,8 +5,8 @@
 #include "inc/legacy_macros.h"
 #include "inc/generic_hash_table.h"
 
-#define BASE_SIZE                   199
-#define TEST_CASES                  180
+#define BASE_SIZE                   1931
+#define TEST_CASES                  1150
 
 typedef struct _test_struct {
     int id;
@@ -57,6 +57,8 @@ int main()
             printf("Delete Error Key -> %ld E_CODE: %d\n", inserted_keys[itr], ret_code);
         else
             printf("Deleted Key -> %ld\n", inserted_keys[itr]);
+
+        printf("\n\n\n");   
 
     }
 

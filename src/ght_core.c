@@ -90,34 +90,35 @@ ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
 #endif  *//* PRINT_LOG */
     //}
 
-    size_t prev_index;
+/*     size_t prev_index;
     if(ght_search(ht, key, &prev_index) == GHT_SUCCESS) {
 
 #if PRINT_LOG
         printf("GHT_KEY_ALRDY_EXISTS Key: %ld\n", key);
-#endif /* PRINT_LOG */
+#endif 
 
         return GHT_KEY_ALRDY_EXISTS;
     }
-
+ */
     unsigned int chain_len = 0;
-    size_t index = \
+    size_t item_index = \
     (size_t) __ght_core_util_get_hash(key, (unsigned long) ht->capacity, chain_len);
 
 #if PRINT_LOG
-    printf("Insert Hashes: %ld", index);
+    printf("Insert Hashes: %ld", item_index);
 #endif /* PRINT_LOG */
 
-    while((ht->items[index].is_active) != false) {
+    while((ht->items[item_index].is_active) != false) {
         ++chain_len;
         if(chain_len == (ht->capacity - 1))
             return GHT_ITEM_NOT_FOUND;
 
-        index = \
-        (size_t) __ght_core_util_get_hash(key, (unsigned long) ht->capacity, chain_len);
+        item_index++;
+        item_index = \
+        (size_t) __ght_core_util_get_hash(item_index, (unsigned long) ht->capacity, chain_len);
 
 #if PRINT_LOG
-        printf("    %ld chain_len: %d", index, chain_len);
+        printf("    %ld chain_len: %d", item_index, chain_len);
 #endif /* PRINT_LOG */
 
     }
@@ -126,7 +127,7 @@ ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
     printf("\n");
 #endif /* PRINT_LOG */
 
-    if(__ght_core_util_item_init(&ht->items[index], key, val, ht->item_size) != GHT_SUCCESS)
+    if(__ght_core_util_item_init(&ht->items[item_index], key, val, ht->item_size) != GHT_SUCCESS)
         return GHT_FAIL;
 
     ht->count += 1;
@@ -153,24 +154,25 @@ ght_ret_status_t
 ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_ptr) {
 
     unsigned int chain_len = 0;
-    size_t index = \
+    size_t item_index = \
     (size_t) __ght_core_util_get_hash(key, (unsigned long) ht->capacity, chain_len);
 
 #if PRINT_LOG
-    printf("Search Hashes: %ld", index);
+    printf("Search Hashes: %ld", item_index);
 #endif /* PRINT_LOG */
 
-    while((ht->items[index].is_active == true) && (ht->items[index].key != key)) {
+    while((ht->items[item_index].is_active == true) && (ht->items[item_index].key != key)) {
 
         ++chain_len;
         if(chain_len == (ht->capacity - 1))
             return GHT_ITEM_NOT_FOUND;
 
-        index = \
-        (size_t) __ght_core_util_get_hash(key, (unsigned long) ht->capacity, chain_len);
+        item_index++;
+        item_index = \
+        (size_t) __ght_core_util_get_hash(item_index, (unsigned long) ht->capacity, chain_len);
 
 #if PRINT_LOG
-        printf("    %ld chain_len: %d", index, chain_len);
+        printf("    %ld chain_len: %d", item_index, chain_len);
 #endif /* PRINT_LOG */
 
     }
@@ -179,8 +181,8 @@ ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_ptr) {
     printf("\n");
 #endif /* PRINT_LOG */
 
-    if(ht->items[index].is_active == true) {
-        *ret_ptr = index;
+    if(ht->items[item_index].is_active == true) {
+        *ret_ptr = item_index;
         return GHT_SUCCESS;
     }
 
@@ -238,13 +240,13 @@ ght_deinit(g_hash_table_t *ht) {
 ght_ret_status_t 
 ght_get(g_hash_table_t *ht, unsigned long key, void *ret_ptr) {
 
-    size_t index;
+    size_t item_index;
     ght_ret_status_t ret_code;
 
-    if((ret_code = ght_search(ht, key, &index)) != GHT_SUCCESS)
+    if((ret_code = ght_search(ht, key, &item_index)) != GHT_SUCCESS)
         return ret_code;
 
-    if(!memcpy(ret_ptr, ht->items[index].val_ptr, ht->item_size)) {
+    if(!memcpy(ret_ptr, ht->items[item_index].val_ptr, ht->item_size)) {
         perror("    ERR: ght_get(): memcpy()");
         return GHT_FAIL;
     }
@@ -287,42 +289,53 @@ ght_delete(g_hash_table_t *ht, unsigned long key) {
         void *temp_item_ptr = NULL;
         unsigned long temp_key;
         ght_ret_status_t ret_code;
-        size_t index = \
+        size_t item_index = \
         (size_t) __ght_core_util_get_hash(key, (unsigned long) ht->capacity, chain_len);
 
 #if PRINT_LOG
-        printf("Search Hashes: %ld", index);
+        printf("Delete Hashes: %ld", item_index);
 #endif /* PRINT_LOG */
 
-        while(ht->items[index].is_active == true) {
+        while(ht->items[item_index].is_active == true) {
 
             if(item_found == true) {
                 if((temp_item_ptr = malloc(ht->item_size)) == NULL)
                     return GHT_FAIL;
-                temp_key = ht->items[index].key;
-                memcpy(temp_item_ptr, ht->items[index].val_ptr, ht->item_size);
-                __ght_core_util_item_deinit(&ht->items[index]);
-                if((ret_code = ght_insert(ht, temp_key, temp_item_ptr)) != GHT_SUCCESS)
+                temp_key = ht->items[item_index].key;
+                memcpy(temp_item_ptr, ht->items[item_index].val_ptr, ht->item_size);
+                __ght_core_util_item_deinit(&ht->items[item_index]);
+                if((ret_code = ght_insert(ht, temp_key, temp_item_ptr)) != GHT_SUCCESS) {
+                    free(temp_item_ptr);
+#if PRINT_LOG
+        printf("Delete - Next item Insert Failed\n");
+#endif /* PRINT_LOG */
                     return GHT_FAIL;
+                }
+                free(temp_item_ptr);
             }
 
-            if(ht->items[index].key == key) {
-                __ght_core_util_item_deinit(&ht->items[index]);
+            if(ht->items[item_index].key == key) {
+                __ght_core_util_item_deinit(&ht->items[item_index]);
                 item_found = true;
             }
 
             ++chain_len;
             if(chain_len == (ht->capacity - 1))
                 return GHT_ITEM_NOT_FOUND;
-
-            index = \
-            (size_t) __ght_core_util_get_hash(key, (unsigned long) ht->capacity, chain_len);
+            
+            item_index++;
+            item_index = \
+            (size_t) __ght_core_util_get_hash(item_index, (unsigned long) ht->capacity, chain_len);
 
 #if PRINT_LOG
-            printf("    %ld chain_len: %d", index, chain_len);
+            printf("    %ld delete_chain_len: %d", item_index, chain_len);
 #endif /* PRINT_LOG */
 
         }
+
+#if PRINT_LOG
+    printf("\n");
+#endif /* PRINT_LOG */
             
     }
     else
@@ -330,7 +343,7 @@ ght_delete(g_hash_table_t *ht, unsigned long key) {
 
     if(item_found == true) {
 #if PRINT_LOG
-        printf("Deleted: %ld\n", index);
+        printf("Deleted: %ld\n", key);
 #endif /* PRINT_LOG */   
         ht->count -= 1;
         return GHT_SUCCESS;
