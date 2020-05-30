@@ -54,7 +54,6 @@ ght_init(g_hash_table_t *ht, size_t base, size_t item_sz) {
     }
 
     return GHT_SUCCESS;
-
 }
 
 
