@@ -102,31 +102,32 @@ get_next_prime(unsigned int base) {
     return base;
 }
 
-#if 0
-
 ght_ret_status_t 
 __ght_core_util_resize(g_hash_table_t *ht, size_t size_estimate) {
 
     if(size_estimate < (ht->base_capacity))
         return GHT_SUCCESS;
 
+    ght_ret_status_t ret_code;
     g_hash_table_t new_ht;
-    new_ht.base_capacity = ht->base_capacity;
-    new_ht.capacity = (size_t) get_next_prime((unsigned int) size_estimate);
-    new_ht.count = 0;
-    new_ht.item_size = ht->item_size;
-    if((new_ht.items = (ght_item_t **) calloc(new_ht.capacity, sizeof(ght_item_t *)))  == NULL)
-        return GHT_FAIL;
+    size_t new_size = get_next_prime(size_estimate);
 
-    if(ht->items) 
+    if((ret_code = ght_init(&new_ht, new_size, ht->item_size)) != GHT_SUCCESS)
+        return GHT_FAIL;
+    
+
+    if(ht->items) {
         for(size_t i = 0; i < ht->capacity; i++) 
-            if(ht->items[i] != NULL) {
-                if(ght_insert(&new_ht, (*ht->items[i]).key, (*ht->items[i]).val_ptr) != \
+            if(ht->items[i].is_active == true) {
+                if((ret_code = ght_insert(&new_ht, ht->items[i].key, ht->items[i].val_ptr)) != \
                 GHT_SUCCESS)
                     return GHT_FAIL;
             }
+    }
 
-    ght_deinit(ht);
+    if(ght_deinit(ht) != GHT_FAIL)
+        return GHT_FAIL;
+        
     *ht = new_ht;
     return GHT_SUCCESS;
 }
@@ -150,7 +151,6 @@ __ght_core_util_scale_down(g_hash_table_t *ht) {
     return GHT_SUCCESS;
 }
 
-#endif
 
 unsigned long 
 get_time_in_nanosec(void) {
