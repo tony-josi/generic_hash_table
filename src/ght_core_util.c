@@ -14,6 +14,7 @@
 #include <errno.h>
 #include <math.h>
 #include <time.h>
+#include <stdint.h>
 
 
 #include "../inc/generic_hash_table.h"
@@ -112,9 +113,22 @@ __ght_core_util_resize(g_hash_table_t *ht, size_t size_estimate) {
     g_hash_table_t new_ht;
     size_t new_size = get_next_prime(size_estimate);
 
-    if((ret_code = ght_init(&new_ht, new_size, ht->item_size)) != GHT_SUCCESS)
+    new_ht.base_capacity = ht->base_capacity;
+    new_ht.capacity = new_size;
+    new_ht.item_size = ht->item_size;
+    new_ht.count = 0;
+    if((new_ht.items = \
+    (ght_item_t *) calloc(new_ht.capacity, sizeof(ght_item_t)))  == NULL)
         return GHT_FAIL;
-    
+
+    uint8_t *alloc_mem = NULL;
+    if((alloc_mem = malloc(new_ht.item_size * new_ht.capacity)) == NULL)
+        return GHT_FAIL;
+
+    for(unsigned int itr = 0; itr < new_ht.capacity; ++itr) {
+        new_ht.items[itr].is_active = false;
+        new_ht.items[itr].val_ptr = (void *) (alloc_mem + (new_ht.item_size * itr)); 
+    }
 
     if(ht->items) {
         for(size_t i = 0; i < ht->capacity; i++) 
@@ -125,10 +139,11 @@ __ght_core_util_resize(g_hash_table_t *ht, size_t size_estimate) {
             }
     }
 
-    if(ght_deinit(ht) != GHT_FAIL)
+    if(ght_deinit(ht) != GHT_SUCCESS)
         return GHT_FAIL;
         
     *ht = new_ht;
+    //memcpy(ht, &new_ht, sizeof(g_hash_table_t));
     return GHT_SUCCESS;
 }
 

@@ -80,13 +80,14 @@ ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
 
     unsigned int ht_density = (ht->count * 100) / ht->capacity;
     if(ht_density > SCALE_UP_THRESHOLD) {
-        if(__ght_core_util_scale_up(ht) != GHT_SUCCESS) 
-            return GHT_FAIL;
 
 #if PRINT_LOG
         printf("\n\n\n\n\n");
         printf("SCALE_UP %ld   Prev Denisty: %d\n\n\n\n\n\n", ht->capacity, ht_density);
 #endif  /* PRINT_LOG */
+
+        if(__ght_core_util_scale_up(ht) != GHT_SUCCESS) 
+            return GHT_FAIL;
     }
 
 /*     size_t prev_index;
