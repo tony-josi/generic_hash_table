@@ -251,7 +251,6 @@ ght_get(g_hash_table_t *ht, unsigned long key, void *ret_ptr) {
     return GHT_SUCCESS;
 }
 
-#if 0
 
 /**
   * @brief  Deletes an item from the hash table.
@@ -270,39 +269,83 @@ ght_get(g_hash_table_t *ht, unsigned long key, void *ret_ptr) {
 ght_ret_status_t 
 ght_delete(g_hash_table_t *ht, unsigned long key) {
 
-    unsigned int ht_density = (ht->count * 100) / ht->capacity;
+/*     unsigned int ht_density = (ht->count * 100) / ht->capacity;
     if((ht->capacity != ht->base_capacity) && (ht_density < SCALE_DOWN_THRESHOLD)) {
         if(__ght_core_util_scale_down(ht) != GHT_SUCCESS)
             return GHT_FAIL;
-
-#if PRINT_LOG
+ */
+/* #if PRINT_LOG
         printf("Scale Down: %ld     Prev Density: %d\n", ht->capacity, ht_density);
-#endif /* PRINT_LOG */
-    }
+#endif */ /* PRINT_LOG */
+    //}
 
-    size_t index;
+    bool item_found = false;
 
     if(ht->count > 0) {
 
-        if(ght_search(ht, key, &index) != GHT_SUCCESS)
-            return GHT_FAIL;
+        unsigned int chain_len = 0;
+        void *temp_item_ptr = NULL;
+        unsigned long temp_key;
+        ght_ret_status_t ret_code;
+        size_t index = \
+        (size_t) __ght_core_util_get_hash(key, (unsigned long) ht->capacity, chain_len);
 
-        if(__ght_core_util_item_deinit(&(ht->items[index])) != GHT_SUCCESS)
-            return GHT_FAIL;
+#if PRINT_LOG
+        printf("Search Hashes: %ld", index);
+#endif /* PRINT_LOG */
+
+        while(ht->items[index].is_active == true) {
+
+            if(item_found == true) {
+                if((temp_item_ptr = malloc(ht->item_size)) == NULL)
+                    return GHT_FAIL;
+                temp_key = ht->items[index].key;
+                memcpy(temp_item_ptr, ht->items[index].val_ptr, ht->item_size);
+                __ght_core_util_item_deinit(&ht->items[index]);
+                if((ret_code = ght_insert(ht, temp_key, temp_item_ptr)) != GHT_SUCCESS)
+                    return GHT_FAIL;
+            }
+
+            if(ht->items[index].key == key) {
+                __ght_core_util_item_deinit(&ht->items[index]);
+                item_found = true;
+            }
+
+            ++chain_len;
+            if(chain_len == (ht->capacity - 1))
+                return GHT_ITEM_NOT_FOUND;
+
+            index = \
+            (size_t) __ght_core_util_get_hash(key, (unsigned long) ht->capacity, chain_len);
+
+#if PRINT_LOG
+            printf("    %ld chain_len: %d", index, chain_len);
+#endif /* PRINT_LOG */
+
+        }
+            
     }
     else
         return GHT_EMPTY;
 
+    if(item_found == true) {
 #if PRINT_LOG
-                printf("Deleted: %ld\n", index);
-#endif /* PRINT_LOG */      
+        printf("Deleted: %ld\n", index);
+#endif /* PRINT_LOG */   
+        ht->count -= 1;
+        return GHT_SUCCESS;
+    }
 
-    ht->count -= 1;
-    return GHT_SUCCESS;
+    else{
+#if PRINT_LOG
+        printf("Delete Fail\n");
+#endif /* PRINT_LOG */   
+        return GHT_FAIL;
+    }
 
 }
 
-#endif
+
 
 /**
   * @brief  Generates a unique key based on system time.
