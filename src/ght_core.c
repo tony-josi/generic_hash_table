@@ -293,7 +293,7 @@ ght_delete(g_hash_table_t *ht, unsigned long key) {
         (size_t) __ght_core_util_get_hash(key, (unsigned long) ht->capacity, chain_len);
 
 #if PRINT_LOG
-        printf("Delete Hashes: %ld", item_index);
+        printf("Delete Hashes: ");
 #endif /* PRINT_LOG */
 
         while(ht->items[item_index].is_active == true) {
@@ -322,14 +322,14 @@ ght_delete(g_hash_table_t *ht, unsigned long key) {
             ++chain_len;
             if(chain_len == (ht->capacity - 1))
                 return GHT_ITEM_NOT_FOUND;
-            
-            item_index++;
-            item_index = \
-            (size_t) __ght_core_util_get_hash(item_index, (unsigned long) ht->capacity, chain_len);
 
 #if PRINT_LOG
             printf("    %ld delete_chain_len: %d", item_index, chain_len);
 #endif /* PRINT_LOG */
+            
+            item_index++;
+            item_index = \
+            (size_t) __ght_core_util_get_hash(item_index, (unsigned long) ht->capacity, chain_len);
 
         }
 
