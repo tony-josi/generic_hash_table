@@ -18,6 +18,7 @@
 #include "../inc/generic_hash_table_core_util.h"
 
 
+
 /**
   * @brief  Initialize the hash table data structure.
   * 
@@ -55,6 +56,7 @@ ght_init(g_hash_table_t *ht, size_t base, size_t item_sz) {
 
     return GHT_SUCCESS;
 }
+
 
 
 /**
@@ -143,6 +145,8 @@ ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
     return GHT_SUCCESS;
 
 }
+
+
 
 /**
   * @brief  Searches if an item is in the hash table.
@@ -264,6 +268,7 @@ ght_get(g_hash_table_t *ht, unsigned long key, void *ret_ptr) {
     }
     return GHT_SUCCESS;
 }
+
 
 
 /**
