@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Generic Hash Table Implementation
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Generic Hash table implementation in C</div>
   </td>
@@ -82,29 +82,36 @@ $(function() {
 <code>#include &lt;errno.h&gt;</code><br />
 <code>#include &lt;math.h&gt;</code><br />
 <code>#include &lt;time.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="generic__hash__table_8h_source.html">../inc/generic_hash_table.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="legacy__macros_8h_source.html">../inc/legacy_macros.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="generic__hash__table__ds_8h_source.html">../inc/generic_hash_table_ds.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="generic__hash__table__core__util_8h_source.html">../inc/generic_hash_table_core_util.h</a>&quot;</code><br />
-</div><table class="memberdecls">
+</div>
+<p><a href="ght__core__util_8c_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a7c4404806fd94992618464f434b6adfd"><td class="memItemLeft" align="right" valign="top"><a id="a7c4404806fd94992618464f434b6adfd"></a>
-<a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>__ght_core_util_item_init</b> (<a class="el" href="structght__item__t.html">ght_item_t</a> **item, unsigned long key, void *val, size_t size)</td></tr>
-<tr class="separator:a7c4404806fd94992618464f434b6adfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bcd63613e0f9c78c0b6cb6fe22b3ddb"><td class="memItemLeft" align="right" valign="top"><a id="a0bcd63613e0f9c78c0b6cb6fe22b3ddb"></a>
-<a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>__ght_core_util_item_deinit</b> (<a class="el" href="structght__item__t.html">ght_item_t</a> **item)</td></tr>
-<tr class="separator:a0bcd63613e0f9c78c0b6cb6fe22b3ddb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21ede2d29b60f503919fa5d41adac687"><td class="memItemLeft" align="right" valign="top"><a id="a21ede2d29b60f503919fa5d41adac687"></a>
+<a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>__ght_core_util_item_init</b> (<a class="el" href="struct__ght__item.html">ght_item_t</a> *item, unsigned long key, void *val, size_t size)</td></tr>
+<tr class="separator:a21ede2d29b60f503919fa5d41adac687"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1306a0a9de592ddc6d8bd6d06a96167a"><td class="memItemLeft" align="right" valign="top"><a id="a1306a0a9de592ddc6d8bd6d06a96167a"></a>
+<a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>__ght_core_util_item_deinit</b> (<a class="el" href="struct__ght__item.html">ght_item_t</a> *item)</td></tr>
+<tr class="separator:a1306a0a9de592ddc6d8bd6d06a96167a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ae731d90b82ab31d530c557c062ee46"><td class="memItemLeft" align="right" valign="top"><a id="a9ae731d90b82ab31d530c557c062ee46"></a>
 unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>__ght_core_util_get_hash</b> (const unsigned long key, const unsigned long capacity, unsigned int chain_degreee)</td></tr>
 <tr class="separator:a9ae731d90b82ab31d530c557c062ee46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3543020ba28a6c53777edf751ec85a19"><td class="memItemLeft" align="right" valign="top"><a id="a3543020ba28a6c53777edf751ec85a19"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>get_next_prime</b> (unsigned int base)</td></tr>
+<tr class="separator:a3543020ba28a6c53777edf751ec85a19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ff47e602fd49e5fa5ff132da4018bde"><td class="memItemLeft" align="right" valign="top"><a id="a0ff47e602fd49e5fa5ff132da4018bde"></a>
-<a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>__ght_core_util_resize</b> (<a class="el" href="structg__hash__table__t.html">g_hash_table_t</a> *ht, size_t size_estimate)</td></tr>
+<a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>__ght_core_util_resize</b> (<a class="el" href="struct__g__hash__table.html">g_hash_table_t</a> *ht, size_t size_estimate)</td></tr>
 <tr class="separator:a0ff47e602fd49e5fa5ff132da4018bde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b7f5c62874e99fff890e76a92bc39c7"><td class="memItemLeft" align="right" valign="top"><a id="a3b7f5c62874e99fff890e76a92bc39c7"></a>
-<a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>__ght_core_util_scale_up</b> (<a class="el" href="structg__hash__table__t.html">g_hash_table_t</a> *ht)</td></tr>
+<a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>__ght_core_util_scale_up</b> (<a class="el" href="struct__g__hash__table.html">g_hash_table_t</a> *ht)</td></tr>
 <tr class="separator:a3b7f5c62874e99fff890e76a92bc39c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a540ed48fc3e9d5f6c5af93728bd91a33"><td class="memItemLeft" align="right" valign="top"><a id="a540ed48fc3e9d5f6c5af93728bd91a33"></a>
-<a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>__ght_core_util_scale_down</b> (<a class="el" href="structg__hash__table__t.html">g_hash_table_t</a> *ht)</td></tr>
+<a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>__ght_core_util_scale_down</b> (<a class="el" href="struct__g__hash__table.html">g_hash_table_t</a> *ht)</td></tr>
 <tr class="separator:a540ed48fc3e9d5f6c5af93728bd91a33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb2cdb3919f5aaf834c8a8a3706ea0a0"><td class="memItemLeft" align="right" valign="top"><a id="aeb2cdb3919f5aaf834c8a8a3706ea0a0"></a>
 unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>get_time_in_nanosec</b> (void)</td></tr>
@@ -113,8 +120,11 @@ unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>get_time_in_
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Utility function definitions for Hash Table Library. </p>
 <p>This contains the Utility function definitions for Hash Table Library</p>
-<dl class="section author"><dt>Author</dt><dd>Tony Josi <a href="https://tjosi.000webhostapp.com/">https://tjosi.000webhostapp.com/</a> </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Tony Josi <a href="https://tonyjosi97.github.io/profile/">https://tonyjosi97.github.io/profile/</a> </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (C) 2020 Tony Josi </dd></dl>
 <dl class="bug"><dt><b><a class="el" href="bug.html#_bug000006">Bug:</a></b></dt><dd>No known bugs. </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="ght__core__util_8c_source.html">ght_core_util.c</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

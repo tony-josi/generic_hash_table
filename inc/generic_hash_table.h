@@ -15,9 +15,31 @@
 
 #include "./generic_hash_table_ds.h"
 
+/*! \def HASH_FUNC_2_PRIME
+    \brief A macro that holds constant prime number 
+            used by 2nd hash function
+   
+*/
 #define HASH_FUNC_2_PRIME                 277
+
+/*! \def PRINT_LOG
+    \brief Turn debug log info output ON(1) / OFF(0)
+   
+*/
 #define PRINT_LOG                         0
+
+/*! \def SCALE_UP_THRESHOLD
+    \brief A macro that holds the threshold percent above 
+    which hash table should scale up
+   
+*/
 #define SCALE_UP_THRESHOLD                60
+
+/*! \def SCALE_DOWN_THRESHOLD
+    \brief A macro that holds the threshold percent below 
+    which hash table should scale down
+   
+*/
 #define SCALE_DOWN_THRESHOLD              20
 
 

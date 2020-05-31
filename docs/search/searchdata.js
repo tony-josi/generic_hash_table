@@ -1,13 +1,14 @@
 var indexSectionsWithContent =
 {
-  0: "_bcgiklv",
-  1: "_g",
+  0: "_bcghiklpsv",
+  1: "_",
   2: "gl",
   3: "g",
-  4: "bcikv",
+  4: "bciksv",
   5: "g",
   6: "g",
-  7: "b"
+  7: "hps",
+  8: "b"
 };
 
 var indexSectionNames =
@@ -19,7 +20,8 @@ var indexSectionNames =
   4: "variables",
   5: "enums",
   6: "enumvalues",
-  7: "pages"
+  7: "defines",
+  8: "pages"
 };
 
 var indexSectionLabels =
@@ -31,6 +33,7 @@ var indexSectionLabels =
   4: "Variables",
   5: "Enumerations",
   6: "Enumerator",
-  7: "Pages"
+  7: "Macros",
+  8: "Pages"
 };
 

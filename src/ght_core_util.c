@@ -4,8 +4,9 @@
  *
  *  This contains the Utility function definitions for Hash Table Library
  *
- *  @author Tony Josi   https://tonyjosi97.github.io/profile/
- *  @bug No known bugs.
+ *  @author         Tony Josi   https://tonyjosi97.github.io/profile/
+ *  @copyright      Copyright (C) 2020 Tony Josi
+ *  @bug            No known bugs.
  */
 
 #include <stdio.h>

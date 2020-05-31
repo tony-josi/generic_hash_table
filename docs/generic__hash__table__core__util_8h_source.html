@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Generic Hash Table Implementation
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Generic Hash table implementation in C</div>
   </td>
@@ -72,25 +72,26 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="generic__hash__table__core__util_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef _GENERIC_HASH_TABLE_CORE_UTIL_H</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define _GENERIC_HASH_TABLE_CORE_UTIL_H</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="generic__hash__table__ds_8h.html">./generic_hash_table_ds.h</a>&quot;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<a class="code" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> __ght_core_util_item_init(<a class="code" href="structght__item__t.html">ght_item_t</a> **, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>, <span class="keywordtype">void</span> *, <span class="keywordtype">size_t</span>);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<a class="code" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> __ght_core_util_item_deinit(<a class="code" href="structght__item__t.html">ght_item_t</a> **);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>    __ght_core_util_get_hash(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<a class="code" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> __ght_core_util_resize(<a class="code" href="structg__hash__table__t.html">g_hash_table_t</a> *, <span class="keywordtype">size_t</span>);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<a class="code" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> __ght_core_util_scale_up(<a class="code" href="structg__hash__table__t.html">g_hash_table_t</a> *);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<a class="code" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> __ght_core_util_scale_down(<a class="code" href="structg__hash__table__t.html">g_hash_table_t</a> *);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>    get_time_in_nanosec(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _GENERIC_HASH_TABLE_CORE_UTIL_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifndef _GENERIC_HASH_TABLE_CORE_UTIL_H</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define _GENERIC_HASH_TABLE_CORE_UTIL_H</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="generic__hash__table__ds_8h.html">./generic_hash_table_ds.h</a>&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<a class="code" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> __ght_core_util_item_init(<a class="code" href="struct__ght__item.html">ght_item_t</a> *, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>, <span class="keywordtype">void</span> *, <span class="keywordtype">size_t</span>);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<a class="code" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> __ght_core_util_item_deinit(<a class="code" href="struct__ght__item.html">ght_item_t</a> *);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>    __ght_core_util_get_hash(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<a class="code" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> __ght_core_util_resize(<a class="code" href="struct__g__hash__table.html">g_hash_table_t</a> *, <span class="keywordtype">size_t</span>);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<a class="code" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> __ght_core_util_scale_up(<a class="code" href="struct__g__hash__table.html">g_hash_table_t</a> *);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<a class="code" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> __ght_core_util_scale_down(<a class="code" href="struct__g__hash__table.html">g_hash_table_t</a> *);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>    get_time_in_nanosec(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>     get_next_prime(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _GENERIC_HASH_TABLE_CORE_UTIL_H */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astructght__item__t_html"><div class="ttname"><a href="structght__item__t.html">ght_item_t</a></div><div class="ttdoc">GHT basic item type.</div></div>
-<div class="ttc" id="astructg__hash__table__t_html"><div class="ttname"><a href="structg__hash__table__t.html">g_hash_table_t</a></div><div class="ttdoc">GHT handle type.</div></div>
 <div class="ttc" id="ageneric__hash__table__ds_8h_html"><div class="ttname"><a href="generic__hash__table__ds_8h.html">generic_hash_table_ds.h</a></div><div class="ttdoc">Header file for data structure defs used for the Hash Table.</div></div>
-<div class="ttc" id="ageneric__hash__table__ds_8h_html_aa28114d20aff9f4d11168361682e35f8"><div class="ttname"><a href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a></div><div class="ttdeci">ght_ret_status_t</div><div class="ttdef"><b>Definition:</b> generic_hash_table_ds.h:17</div></div>
+<div class="ttc" id="ageneric__hash__table__ds_8h_html_aa28114d20aff9f4d11168361682e35f8"><div class="ttname"><a href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a></div><div class="ttdeci">ght_ret_status_t</div><div class="ttdef"><b>Definition:</b> <a href="generic__hash__table__ds_8h_source.html#l00019">generic_hash_table_ds.h:19</a></div></div>
+<div class="ttc" id="astruct__ght__item_html"><div class="ttname"><a href="struct__ght__item.html">_ght_item</a></div><div class="ttdoc">GHT basic item type.</div><div class="ttdef"><b>Definition:</b> <a href="generic__hash__table__ds_8h_source.html#l00034">generic_hash_table_ds.h:34</a></div></div>
+<div class="ttc" id="astruct__g__hash__table_html"><div class="ttname"><a href="struct__g__hash__table.html">_g_hash_table</a></div><div class="ttdoc">GHT handle type.</div><div class="ttdef"><b>Definition:</b> <a href="generic__hash__table__ds_8h_source.html#l00048">generic_hash_table_ds.h:48</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

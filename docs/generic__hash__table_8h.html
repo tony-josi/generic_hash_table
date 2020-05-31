@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Generic Hash Table Implementation
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Generic Hash table implementation in C</div>
   </td>
@@ -84,226 +84,55 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a465e9ba703d3596cfbf1d0bd152957ae"><td class="memItemLeft" align="right" valign="top"><a id="a465e9ba703d3596cfbf1d0bd152957ae"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>HASH_FUNC_2_PRIME</b>&#160;&#160;&#160;67</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic__hash__table_8h.html#a465e9ba703d3596cfbf1d0bd152957ae">HASH_FUNC_2_PRIME</a>&#160;&#160;&#160;277</td></tr>
+<tr class="memdesc:a465e9ba703d3596cfbf1d0bd152957ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">A macro that holds constant prime number used by 2nd hash function. <br /></td></tr>
 <tr class="separator:a465e9ba703d3596cfbf1d0bd152957ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa03c5c1bdbdbc745d60e93a904489f03"><td class="memItemLeft" align="right" valign="top"><a id="aa03c5c1bdbdbc745d60e93a904489f03"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PRINT_LOG</b>&#160;&#160;&#160;0</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic__hash__table_8h.html#aa03c5c1bdbdbc745d60e93a904489f03">PRINT_LOG</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:aa03c5c1bdbdbc745d60e93a904489f03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turn debug log info output ON(1) / OFF(0) <br /></td></tr>
 <tr class="separator:aa03c5c1bdbdbc745d60e93a904489f03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10d0758981577bf3f39ce3e41466bdca"><td class="memItemLeft" align="right" valign="top"><a id="a10d0758981577bf3f39ce3e41466bdca"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SCALE_UP_THRESHOLD</b>&#160;&#160;&#160;60</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic__hash__table_8h.html#a10d0758981577bf3f39ce3e41466bdca">SCALE_UP_THRESHOLD</a>&#160;&#160;&#160;60</td></tr>
+<tr class="memdesc:a10d0758981577bf3f39ce3e41466bdca"><td class="mdescLeft">&#160;</td><td class="mdescRight">A macro that holds the threshold percent above which hash table should scale up. <br /></td></tr>
 <tr class="separator:a10d0758981577bf3f39ce3e41466bdca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5462b592cd124fb17497991677fdc49e"><td class="memItemLeft" align="right" valign="top"><a id="a5462b592cd124fb17497991677fdc49e"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SCALE_DOWN_THRESHOLD</b>&#160;&#160;&#160;20</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic__hash__table_8h.html#a5462b592cd124fb17497991677fdc49e">SCALE_DOWN_THRESHOLD</a>&#160;&#160;&#160;20</td></tr>
+<tr class="memdesc:a5462b592cd124fb17497991677fdc49e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A macro that holds the threshold percent below which hash table should scale down. <br /></td></tr>
 <tr class="separator:a5462b592cd124fb17497991677fdc49e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ab4dbff582fbc16cb5294f0609baac4d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic__hash__table_8h.html#ab4dbff582fbc16cb5294f0609baac4d4">ght_init</a> (<a class="el" href="structg__hash__table__t.html">g_hash_table_t</a> *, size_t, size_t)</td></tr>
-<tr class="memdesc:ab4dbff582fbc16cb5294f0609baac4d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the hash table data structure.  <a href="generic__hash__table_8h.html#ab4dbff582fbc16cb5294f0609baac4d4">More...</a><br /></td></tr>
+<tr class="memitem:ab4dbff582fbc16cb5294f0609baac4d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic__hash__table_8h.html#ab4dbff582fbc16cb5294f0609baac4d4">ght_init</a> (<a class="el" href="struct__g__hash__table.html">g_hash_table_t</a> *, size_t, size_t)</td></tr>
+<tr class="memdesc:ab4dbff582fbc16cb5294f0609baac4d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the hash table.  <a href="generic__hash__table_8h.html#ab4dbff582fbc16cb5294f0609baac4d4">More...</a><br /></td></tr>
 <tr class="separator:ab4dbff582fbc16cb5294f0609baac4d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa155b0d297a55e1d3b62cddb9c70ecae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic__hash__table_8h.html#aa155b0d297a55e1d3b62cddb9c70ecae">ght_insert</a> (<a class="el" href="structg__hash__table__t.html">g_hash_table_t</a> *, unsigned long, void *)</td></tr>
-<tr class="memdesc:aa155b0d297a55e1d3b62cddb9c70ecae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts an item to the hash.  <a href="generic__hash__table_8h.html#aa155b0d297a55e1d3b62cddb9c70ecae">More...</a><br /></td></tr>
+<tr class="memitem:aa155b0d297a55e1d3b62cddb9c70ecae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic__hash__table_8h.html#aa155b0d297a55e1d3b62cddb9c70ecae">ght_insert</a> (<a class="el" href="struct__g__hash__table.html">g_hash_table_t</a> *, unsigned long, void *)</td></tr>
+<tr class="memdesc:aa155b0d297a55e1d3b62cddb9c70ecae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert an item to the given hash table.  <a href="generic__hash__table_8h.html#aa155b0d297a55e1d3b62cddb9c70ecae">More...</a><br /></td></tr>
 <tr class="separator:aa155b0d297a55e1d3b62cddb9c70ecae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a546f2fac2182622df933f2c21640b3f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic__hash__table_8h.html#a546f2fac2182622df933f2c21640b3f1">ght_search</a> (<a class="el" href="structg__hash__table__t.html">g_hash_table_t</a> *, unsigned long, size_t *)</td></tr>
-<tr class="memdesc:a546f2fac2182622df933f2c21640b3f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches if an item is in the hash table.  <a href="generic__hash__table_8h.html#a546f2fac2182622df933f2c21640b3f1">More...</a><br /></td></tr>
+<tr class="memitem:a546f2fac2182622df933f2c21640b3f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic__hash__table_8h.html#a546f2fac2182622df933f2c21640b3f1">ght_search</a> (<a class="el" href="struct__g__hash__table.html">g_hash_table_t</a> *, unsigned long, size_t *)</td></tr>
+<tr class="memdesc:a546f2fac2182622df933f2c21640b3f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Search for an item in the hash table.  <a href="generic__hash__table_8h.html#a546f2fac2182622df933f2c21640b3f1">More...</a><br /></td></tr>
 <tr class="separator:a546f2fac2182622df933f2c21640b3f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb7d607c87c35ad08232d0e8455d9df6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic__hash__table_8h.html#abb7d607c87c35ad08232d0e8455d9df6">ght_get</a> (<a class="el" href="structg__hash__table__t.html">g_hash_table_t</a> *, unsigned long, void *)</td></tr>
-<tr class="memdesc:abb7d607c87c35ad08232d0e8455d9df6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets an item from the hash table.  <a href="generic__hash__table_8h.html#abb7d607c87c35ad08232d0e8455d9df6">More...</a><br /></td></tr>
+<tr class="memitem:abb7d607c87c35ad08232d0e8455d9df6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic__hash__table_8h.html#abb7d607c87c35ad08232d0e8455d9df6">ght_get</a> (<a class="el" href="struct__g__hash__table.html">g_hash_table_t</a> *, unsigned long, void *)</td></tr>
+<tr class="memdesc:abb7d607c87c35ad08232d0e8455d9df6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a copy of an item from the hash table.  <a href="generic__hash__table_8h.html#abb7d607c87c35ad08232d0e8455d9df6">More...</a><br /></td></tr>
 <tr class="separator:abb7d607c87c35ad08232d0e8455d9df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac437ad7410f382aacc85a7c1ca1fc675"><td class="memItemLeft" align="right" valign="top"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic__hash__table_8h.html#ac437ad7410f382aacc85a7c1ca1fc675">ght_delete</a> (<a class="el" href="structg__hash__table__t.html">g_hash_table_t</a> *, unsigned long)</td></tr>
-<tr class="memdesc:ac437ad7410f382aacc85a7c1ca1fc675"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes an item from the hash table.  <a href="generic__hash__table_8h.html#ac437ad7410f382aacc85a7c1ca1fc675">More...</a><br /></td></tr>
+<tr class="memitem:ac437ad7410f382aacc85a7c1ca1fc675"><td class="memItemLeft" align="right" valign="top"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic__hash__table_8h.html#ac437ad7410f382aacc85a7c1ca1fc675">ght_delete</a> (<a class="el" href="struct__g__hash__table.html">g_hash_table_t</a> *, unsigned long)</td></tr>
+<tr class="memdesc:ac437ad7410f382aacc85a7c1ca1fc675"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete the given item from the hash table.  <a href="generic__hash__table_8h.html#ac437ad7410f382aacc85a7c1ca1fc675">More...</a><br /></td></tr>
 <tr class="separator:ac437ad7410f382aacc85a7c1ca1fc675"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e5428cfdbb06e6e32f9e9aa87bc31fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic__hash__table_8h.html#a1e5428cfdbb06e6e32f9e9aa87bc31fe">ght_deinit</a> (<a class="el" href="structg__hash__table__t.html">g_hash_table_t</a> *)</td></tr>
-<tr class="memdesc:a1e5428cfdbb06e6e32f9e9aa87bc31fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">De-initializes the handle to the hash table.  <a href="generic__hash__table_8h.html#a1e5428cfdbb06e6e32f9e9aa87bc31fe">More...</a><br /></td></tr>
+<tr class="memitem:a1e5428cfdbb06e6e32f9e9aa87bc31fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic__hash__table_8h.html#a1e5428cfdbb06e6e32f9e9aa87bc31fe">ght_deinit</a> (<a class="el" href="struct__g__hash__table.html">g_hash_table_t</a> *)</td></tr>
+<tr class="memdesc:a1e5428cfdbb06e6e32f9e9aa87bc31fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Un initialize the given hash table.  <a href="generic__hash__table_8h.html#a1e5428cfdbb06e6e32f9e9aa87bc31fe">More...</a><br /></td></tr>
 <tr class="separator:a1e5428cfdbb06e6e32f9e9aa87bc31fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af84f6778607f6b3f4f770fbb9c948bfd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="generic__hash__table_8h.html#af84f6778607f6b3f4f770fbb9c948bfd">ght_generate_key</a> (unsigned long *)</td></tr>
-<tr class="memdesc:af84f6778607f6b3f4f770fbb9c948bfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a unique key based on system time.  <a href="generic__hash__table_8h.html#af84f6778607f6b3f4f770fbb9c948bfd">More...</a><br /></td></tr>
+<tr class="memdesc:af84f6778607f6b3f4f770fbb9c948bfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a 64 - bit unique key, can be used as keys for items.  <a href="generic__hash__table_8h.html#af84f6778607f6b3f4f770fbb9c948bfd">More...</a><br /></td></tr>
 <tr class="separator:af84f6778607f6b3f4f770fbb9c948bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Master Header file for Hash Table Library. </p>
 <p>This contains the Header file for data structure &amp; basic funcs. defs used for the Hash Table library</p>
-<dl class="section author"><dt>Author</dt><dd>Tony Josi <a href="https://tjosi.000webhostapp.com/">https://tjosi.000webhostapp.com/</a> </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Tony Josi <a href="https://tonyjosi97.github.io/profile/">https://tonyjosi97.github.io/profile/</a> </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (C) 2020 Tony Josi </dd></dl>
 <dl class="bug"><dt><b><a class="el" href="bug.html#_bug000001">Bug:</a></b></dt><dd>No known bugs. </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="generic__hash__table_8h_source.html">generic_hash_table.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a1e5428cfdbb06e6e32f9e9aa87bc31fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1e5428cfdbb06e6e32f9e9aa87bc31fe">&#9670;&nbsp;</a></span>ght_deinit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> ght_deinit </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structg__hash__table__t.html">g_hash_table_t</a> *&#160;</td>
-          <td class="paramname"><em>ht</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>De-initializes the handle to the hash table. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">ht</td><td>Hash Table handle.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>This procedure De-initializes the handle of hash table and frees all allocated memory.</dd></dl>
-<dl class="retval"><dt>Return values</dt><dd>
-  <table class="retval">
-    <tr><td class="paramname">Status</td><td><ul>
-<li><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8ab6c388f89ccadd86b98884e8bc0dd541">GHT_SUCCESS</a> De-initialize success</li>
-<li><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8ab3df4912b928cbf65c241b10e4d13f86">GHT_FAIL</a> De-initialize function failed </li>
-</ul>
-</td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ac437ad7410f382aacc85a7c1ca1fc675"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac437ad7410f382aacc85a7c1ca1fc675">&#9670;&nbsp;</a></span>ght_delete()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> ght_delete </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structg__hash__table__t.html">g_hash_table_t</a> *&#160;</td>
-          <td class="paramname"><em>ht</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned long&#160;</td>
-          <td class="paramname"><em>key</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Deletes an item from the hash table. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">ht</td><td>Hash Table handle. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>Key value of the item.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>This procedure searches for an item in the hash table and deletes the item if present.</dd></dl>
-<dl class="retval"><dt>Return values</dt><dd>
-  <table class="retval">
-    <tr><td class="paramname">Status</td><td><ul>
-<li><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8ab6c388f89ccadd86b98884e8bc0dd541">GHT_SUCCESS</a> Delete success</li>
-<li><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8aba0445e12fdd29194ffc7bfef26125a5">GHT_EMPTY</a> Hash Table is empty</li>
-<li><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8ab3df4912b928cbf65c241b10e4d13f86">GHT_FAIL</a> Delete function failed </li>
-</ul>
-</td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="af84f6778607f6b3f4f770fbb9c948bfd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af84f6778607f6b3f4f770fbb9c948bfd">&#9670;&nbsp;</a></span>ght_generate_key()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> ght_generate_key </td>
-          <td>(</td>
-          <td class="paramtype">unsigned long *&#160;</td>
-          <td class="paramname"><em>key</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generates a unique key based on system time. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">ht</td><td>Pointer to the key location.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>This procedure generates a uinique and time based (2 keys distinguished, on which is latest) key that can be used as the hash key, if required.</dd></dl>
-<dl class="retval"><dt>Return values</dt><dd>
-  <table class="retval">
-    <tr><td class="paramname">Status</td><td><ul>
-<li><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8ab6c388f89ccadd86b98884e8bc0dd541">GHT_SUCCESS</a> Delete success </li>
-</ul>
-</td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="abb7d607c87c35ad08232d0e8455d9df6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb7d607c87c35ad08232d0e8455d9df6">&#9670;&nbsp;</a></span>ght_get()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> ght_get </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structg__hash__table__t.html">g_hash_table_t</a> *&#160;</td>
-          <td class="paramname"><em>ht</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned long&#160;</td>
-          <td class="paramname"><em>key</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>ret_ptr</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets an item from the hash table. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">ht</td><td>Hash Table handle. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>Key value of the item. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">ret_ptr</td><td>Pointer to the location to which the item will be copied.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>This procedure searches for an item in the hash table and copies the item to the given pointer location if present.</dd></dl>
-<dl class="retval"><dt>Return values</dt><dd>
-  <table class="retval">
-    <tr><td class="paramname">Status</td><td><ul>
-<li><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8ab6c388f89ccadd86b98884e8bc0dd541">GHT_SUCCESS</a> Get success</li>
-<li><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8aba0445e12fdd29194ffc7bfef26125a5">GHT_EMPTY</a> Hash Table is empty</li>
-<li><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8ab3df4912b928cbf65c241b10e4d13f86">GHT_FAIL</a> Get function failed </li>
-</ul>
-</td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="ab4dbff582fbc16cb5294f0609baac4d4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab4dbff582fbc16cb5294f0609baac4d4">&#9670;&nbsp;</a></span>ght_init()</h2>
 
@@ -313,7 +142,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> ght_init </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structg__hash__table__t.html">g_hash_table_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="struct__g__hash__table.html">g_hash_table_t</a> *&#160;</td>
           <td class="paramname"><em>ht</em>, </td>
         </tr>
         <tr>
@@ -336,7 +165,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initialize the hash table data structure. </p>
+<p>Initialize the hash table. </p>
+<p>Initialize the hash table.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">ht</td><td>Hash Table handle. </td></tr>
@@ -345,7 +175,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>This procedure initialises the <a class="el" href="structg__hash__table__t.html" title="GHT handle type.">g_hash_table_t</a> pointer variable with the base size and size of each of the item in the hash table. Also, allocates memory for each #base number of items.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This procedure initialises the #g_hash_table_t pointer variable with the base size and size of each of the item in the hash table. Also, allocates memory for each #base number of items.</dd></dl>
 <dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
     <tr><td class="paramname">Status</td><td><ul>
@@ -356,6 +186,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="ght__core_8c_source.html#l00039">39</a> of file <a class="el" href="ght__core_8c_source.html">ght_core.c</a>.</p>
 
 </div>
 </div>
@@ -368,7 +200,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> ght_insert </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structg__hash__table__t.html">g_hash_table_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="struct__g__hash__table.html">g_hash_table_t</a> *&#160;</td>
           <td class="paramname"><em>ht</em>, </td>
         </tr>
         <tr>
@@ -391,7 +223,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Inserts an item to the hash. </p>
+<p>Insert an item to the given hash table. </p>
+<p>Insert an item to the given hash table.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">ht</td><td>Hash Table handle. </td></tr>
@@ -415,6 +248,8 @@ Calculates the hash table fill density to decide whether scale the hash table si
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="ght__core_8c_source.html#l00083">83</a> of file <a class="el" href="ght__core_8c_source.html">ght_core.c</a>.</p>
+
 </div>
 </div>
 <a id="a546f2fac2182622df933f2c21640b3f1"></a>
@@ -426,7 +261,7 @@ Calculates the hash table fill density to decide whether scale the hash table si
         <tr>
           <td class="memname"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> ght_search </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structg__hash__table__t.html">g_hash_table_t</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="struct__g__hash__table.html">g_hash_table_t</a> *&#160;</td>
           <td class="paramname"><em>ht</em>, </td>
         </tr>
         <tr>
@@ -449,7 +284,8 @@ Calculates the hash table fill density to decide whether scale the hash table si
       </table>
 </div><div class="memdoc">
 
-<p>Searches if an item is in the hash table. </p>
+<p>Search for an item in the hash table. </p>
+<p>Search for an item in the hash table.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">ht</td><td>Hash Table handle. </td></tr>
@@ -470,6 +306,198 @@ Calculates the hash table fill density to decide whether scale the hash table si
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="ght__core_8c_source.html#l00171">171</a> of file <a class="el" href="ght__core_8c_source.html">ght_core.c</a>.</p>
+
+</div>
+</div>
+<a id="abb7d607c87c35ad08232d0e8455d9df6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb7d607c87c35ad08232d0e8455d9df6">&#9670;&nbsp;</a></span>ght_get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> ght_get </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__g__hash__table.html">g_hash_table_t</a> *&#160;</td>
+          <td class="paramname"><em>ht</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>ret_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a copy of an item from the hash table. </p>
+<p>Get a copy of an item from the hash table.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ht</td><td>Hash Table handle. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>Key value of the item. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">ret_ptr</td><td>Pointer to the location to which the item will be copied.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This procedure searches for an item in the hash table and copies the item to the given pointer location if present.</dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Status</td><td><ul>
+<li><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8ab6c388f89ccadd86b98884e8bc0dd541">GHT_SUCCESS</a> Get success</li>
+<li><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8aba0445e12fdd29194ffc7bfef26125a5">GHT_EMPTY</a> Hash Table is empty</li>
+<li><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8ab3df4912b928cbf65c241b10e4d13f86">GHT_FAIL</a> Get function failed </li>
+</ul>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="ght__core_8c_source.html#l00233">233</a> of file <a class="el" href="ght__core_8c_source.html">ght_core.c</a>.</p>
+
+</div>
+</div>
+<a id="ac437ad7410f382aacc85a7c1ca1fc675"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac437ad7410f382aacc85a7c1ca1fc675">&#9670;&nbsp;</a></span>ght_delete()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> ght_delete </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__g__hash__table.html">g_hash_table_t</a> *&#160;</td>
+          <td class="paramname"><em>ht</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long&#160;</td>
+          <td class="paramname"><em>key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Delete the given item from the hash table. </p>
+<p>Delete the given item from the hash table.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ht</td><td>Hash Table handle. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>Key value of the item.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This procedure searches for an item in the hash table and deletes the item if present.</dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Status</td><td><ul>
+<li><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8ab6c388f89ccadd86b98884e8bc0dd541">GHT_SUCCESS</a> Delete success</li>
+<li><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8aba0445e12fdd29194ffc7bfef26125a5">GHT_EMPTY</a> Hash Table is empty</li>
+<li><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8ab3df4912b928cbf65c241b10e4d13f86">GHT_FAIL</a> Delete function failed </li>
+</ul>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="ght__core_8c_source.html#l00265">265</a> of file <a class="el" href="ght__core_8c_source.html">ght_core.c</a>.</p>
+
+</div>
+</div>
+<a id="a1e5428cfdbb06e6e32f9e9aa87bc31fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e5428cfdbb06e6e32f9e9aa87bc31fe">&#9670;&nbsp;</a></span>ght_deinit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> ght_deinit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__g__hash__table.html">g_hash_table_t</a> *&#160;</td>
+          <td class="paramname"><em>ht</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Un initialize the given hash table. </p>
+<p>Un initialize the given hash table.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ht</td><td>Hash Table handle.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This procedure De-initializes the handle of hash table and frees all allocated memory.</dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Status</td><td><ul>
+<li><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8ab6c388f89ccadd86b98884e8bc0dd541">GHT_SUCCESS</a> De-initialize success</li>
+<li><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8ab3df4912b928cbf65c241b10e4d13f86">GHT_FAIL</a> De-initialize function failed </li>
+</ul>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="ght__core_8c_source.html#l00380">380</a> of file <a class="el" href="ght__core_8c_source.html">ght_core.c</a>.</p>
+
+</div>
+</div>
+<a id="af84f6778607f6b3f4f770fbb9c948bfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af84f6778607f6b3f4f770fbb9c948bfd">&#9670;&nbsp;</a></span>ght_generate_key()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8">ght_ret_status_t</a> ght_generate_key </td>
+          <td>(</td>
+          <td class="paramtype">unsigned long *&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generate a 64 - bit unique key, can be used as keys for items. </p>
+<p>Generate a 64 - bit unique key, can be used as keys for items.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">ht</td><td>Pointer to the key location.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This procedure generates a uinique and time based (2 keys distinguished, on which is latest) key that can be used as the hash key, if required.</dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Status</td><td><ul>
+<li><a class="el" href="generic__hash__table__ds_8h.html#aa28114d20aff9f4d11168361682e35f8ab6c388f89ccadd86b98884e8bc0dd541">GHT_SUCCESS</a> Delete success </li>
+</ul>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="ght__core_8c_source.html#l00409">409</a> of file <a class="el" href="ght__core_8c_source.html">ght_core.c</a>.</p>
 
 </div>
 </div>

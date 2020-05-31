@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['item_5fsize_27',['item_size',['../struct__g__hash__table.html#a6061f3e2a2b1a55b28351112f38da9c4',1,'_g_hash_table']]],
-  ['items_28',['items',['../struct__g__hash__table.html#aeb91c32deb753f82d7ae40345a6bbb04',1,'_g_hash_table']]]
+  ['hash_5ffunc_5f2_5fprime_25',['HASH_FUNC_2_PRIME',['../generic__hash__table_8h.html#a465e9ba703d3596cfbf1d0bd152957ae',1,'generic_hash_table.h']]]
 ];

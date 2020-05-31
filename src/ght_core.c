@@ -212,34 +212,6 @@ ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_ptr) {
 
 
 
-/**
-  * @brief  De-initializes the handle to the hash table.
-  * 
-  * @param  [in] ht      Hash Table handle.
-  * 
-  * @note   This procedure De-initializes the handle of 
-  *         hash table and frees all allocated memory. 
-  * 
-  * @retval Status:
-  *             - #GHT_SUCCESS              De-initialize success
-  *             - #GHT_FAIL                 De-initialize function failed
-*/
-ght_ret_status_t 
-ght_deinit(g_hash_table_t *ht) {
-
-    if(ht->items) {
-
-        if(ht->items[0].val_ptr) 
-            free(ht->items[0].val_ptr);
-    
-        free(ht->items);
-        return GHT_SUCCESS;
-    }
-
-    return GHT_FAIL;
-}
-
-
 
 /**
   * @brief  Gets an item from the hash table.
@@ -388,6 +360,35 @@ ght_delete(g_hash_table_t *ht, unsigned long key) {
         return GHT_FAIL;
     }
 
+}
+
+
+
+/**
+  * @brief  De-initializes the handle to the hash table.
+  * 
+  * @param  [in] ht      Hash Table handle.
+  * 
+  * @note   This procedure De-initializes the handle of 
+  *         hash table and frees all allocated memory. 
+  * 
+  * @retval Status:
+  *             - #GHT_SUCCESS              De-initialize success
+  *             - #GHT_FAIL                 De-initialize function failed
+*/
+ght_ret_status_t 
+ght_deinit(g_hash_table_t *ht) {
+
+    if(ht->items) {
+
+        if(ht->items[0].val_ptr) 
+            free(ht->items[0].val_ptr);
+    
+        free(ht->items);
+        return GHT_SUCCESS;
+    }
+
+    return GHT_FAIL;
 }
 
 

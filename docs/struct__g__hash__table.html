@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Generic Hash Table Implementation
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">2.0.0</span>
    </div>
    <div id="projectbrief">Generic Hash table implementation in C</div>
   </td>
@@ -70,6 +70,11 @@ $(function() {
 <div class="title">_g_hash_table Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>GHT handle type.  
+ <a href="struct__g__hash__table.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="generic__hash__table__ds_8h_source.html">generic_hash_table_ds.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -81,10 +86,17 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a6061f3e2a2b1a55b28351112f38da9c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68c2fccc8576c794b46628e4a5e3dc6e"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__g__hash__table.html#a68c2fccc8576c794b46628e4a5e3dc6e">count</a></td></tr>
 <tr class="separator:a68c2fccc8576c794b46628e4a5e3dc6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb91c32deb753f82d7ae40345a6bbb04"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structght__item__t.html">ght_item_t</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__g__hash__table.html#aeb91c32deb753f82d7ae40345a6bbb04">items</a></td></tr>
-<tr class="separator:aeb91c32deb753f82d7ae40345a6bbb04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf920b9acbc012dbc3af0a8ccd76e90b"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__g__hash__table.html#abf920b9acbc012dbc3af0a8ccd76e90b">scaling_factor</a></td></tr>
+<tr class="separator:abf920b9acbc012dbc3af0a8ccd76e90b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a182e4ca447ff3f0b93166ed8eab25014"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct__ght__item.html">ght_item_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__g__hash__table.html#a182e4ca447ff3f0b93166ed8eab25014">items</a></td></tr>
+<tr class="separator:a182e4ca447ff3f0b93166ed8eab25014"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>GHT handle type. </p>
+<p>Basic structure holding all the feilds related to the specific hash table </p>
+
+<p class="definition">Definition at line <a class="el" href="generic__hash__table__ds_8h_source.html#l00048">48</a> of file <a class="el" href="generic__hash__table__ds_8h_source.html">generic_hash_table_ds.h</a>.</p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="ad93e19b50d57915c16afb1e5fb032423"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad93e19b50d57915c16afb1e5fb032423">&#9670;&nbsp;</a></span>base_capacity</h2>
 
@@ -97,6 +109,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Base capacity of Hash Table </p>
+
+<p class="definition">Definition at line <a class="el" href="generic__hash__table__ds_8h_source.html#l00050">50</a> of file <a class="el" href="generic__hash__table__ds_8h_source.html">generic_hash_table_ds.h</a>.</p>
 
 </div>
 </div>
@@ -113,20 +127,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Current capacity of Hash Table </p>
 
-</div>
-</div>
-<a id="a68c2fccc8576c794b46628e4a5e3dc6e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68c2fccc8576c794b46628e4a5e3dc6e">&#9670;&nbsp;</a></span>count</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t _g_hash_table::count</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Current count items in Hash Table </p>
+<p class="definition">Definition at line <a class="el" href="generic__hash__table__ds_8h_source.html#l00051">51</a> of file <a class="el" href="generic__hash__table__ds_8h_source.html">generic_hash_table_ds.h</a>.</p>
 
 </div>
 </div>
@@ -143,20 +144,58 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Size of an item in Hash Table </p>
 
+<p class="definition">Definition at line <a class="el" href="generic__hash__table__ds_8h_source.html#l00052">52</a> of file <a class="el" href="generic__hash__table__ds_8h_source.html">generic_hash_table_ds.h</a>.</p>
+
 </div>
 </div>
-<a id="aeb91c32deb753f82d7ae40345a6bbb04"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb91c32deb753f82d7ae40345a6bbb04">&#9670;&nbsp;</a></span>items</h2>
+<a id="a68c2fccc8576c794b46628e4a5e3dc6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68c2fccc8576c794b46628e4a5e3dc6e">&#9670;&nbsp;</a></span>count</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structght__item__t.html">ght_item_t</a>** _g_hash_table::items</td>
+          <td class="memname">size_t _g_hash_table::count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Current count items in Hash Table </p>
+
+<p class="definition">Definition at line <a class="el" href="generic__hash__table__ds_8h_source.html#l00053">53</a> of file <a class="el" href="generic__hash__table__ds_8h_source.html">generic_hash_table_ds.h</a>.</p>
+
+</div>
+</div>
+<a id="abf920b9acbc012dbc3af0a8ccd76e90b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf920b9acbc012dbc3af0a8ccd76e90b">&#9670;&nbsp;</a></span>scaling_factor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int _g_hash_table::scaling_factor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Current number of up scalings, decreased on scale down </p>
+
+<p class="definition">Definition at line <a class="el" href="generic__hash__table__ds_8h_source.html#l00054">54</a> of file <a class="el" href="generic__hash__table__ds_8h_source.html">generic_hash_table_ds.h</a>.</p>
+
+</div>
+</div>
+<a id="a182e4ca447ff3f0b93166ed8eab25014"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a182e4ca447ff3f0b93166ed8eab25014">&#9670;&nbsp;</a></span>items</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct__ght__item.html">ght_item_t</a>* _g_hash_table::items</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Pointer to the items memory of Hash Table </p>
+
+<p class="definition">Definition at line <a class="el" href="generic__hash__table__ds_8h_source.html#l00056">56</a> of file <a class="el" href="generic__hash__table__ds_8h_source.html">generic_hash_table_ds.h</a>.</p>
 
 </div>
 </div>
