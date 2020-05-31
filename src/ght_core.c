@@ -36,7 +36,10 @@
   *             - #GHT_FAIL     Init failed
 */
 ght_ret_status_t 
-ght_init(g_hash_table_t *ht, size_t base, size_t item_sz) {
+ght_init(
+    g_hash_table_t *ht, 
+    size_t base, 
+    size_t item_sz) {
 
     ht->base_capacity = base;
     ht->capacity = ht->base_capacity;
@@ -80,7 +83,10 @@ ght_init(g_hash_table_t *ht, size_t base, size_t item_sz) {
   *             - #GHT_FAIL                 Init failed
 */
 ght_ret_status_t 
-ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
+ght_insert(
+    g_hash_table_t *ht, 
+    unsigned long key, 
+    void *val) {
 
     unsigned int ht_density = (ht->count * 100) / ht->capacity;
     if(ht_density > SCALE_UP_THRESHOLD) {
@@ -168,7 +174,10 @@ ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
   *             - #GHT_FAIL                 Search function failed
 */
 ght_ret_status_t 
-ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_ptr) {
+ght_search(
+    g_hash_table_t *ht, 
+    unsigned long key, 
+    size_t *ret_ptr) {
 
     unsigned int chain_len = 0;
     size_t item_index = \
@@ -230,7 +239,10 @@ ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_ptr) {
   *             - #GHT_FAIL                 Get function failed
 */
 ght_ret_status_t 
-ght_get(g_hash_table_t *ht, unsigned long key, void *ret_ptr) {
+ght_get(
+    g_hash_table_t *ht, 
+    unsigned long key, 
+    void *ret_ptr) {
 
     size_t item_index;
     ght_ret_status_t ret_code;
@@ -262,7 +274,9 @@ ght_get(g_hash_table_t *ht, unsigned long key, void *ret_ptr) {
   *             - #GHT_FAIL                 Delete function failed
 */
 ght_ret_status_t 
-ght_delete(g_hash_table_t *ht, unsigned long key) {
+ght_delete(
+    g_hash_table_t *ht, 
+    unsigned long key) {
 
     unsigned int ht_density = (ht->count * 100) / ht->capacity;
 
@@ -377,7 +391,8 @@ ght_delete(g_hash_table_t *ht, unsigned long key) {
   *             - #GHT_FAIL                 De-initialize function failed
 */
 ght_ret_status_t 
-ght_deinit(g_hash_table_t *ht) {
+ght_deinit(
+    g_hash_table_t *ht) {
 
     if(ht->items) {
 
@@ -406,7 +421,9 @@ ght_deinit(g_hash_table_t *ht) {
   *             - #GHT_SUCCESS              Delete success
 */
 ght_ret_status_t 
-ght_generate_key(unsigned long *key) {
+ght_generate_key(
+    unsigned long *key) {
+    
     struct tm * timeinfo;
     time_t now = time(0);
     timeinfo = localtime(&now);
