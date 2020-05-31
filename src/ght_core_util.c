@@ -4,7 +4,7 @@
  *
  *  This contains the Utility function definitions for Hash Table Library
  *
- *  @author Tony Josi   https://tjosi.000webhostapp.com/
+ *  @author Tony Josi   https://tonyjosi97.github.io/profile/
  *  @bug No known bugs.
  */
 

@@ -5,8 +5,9 @@
  *  This contains the Header file for data structure 
  *  defs used for the Hash Table 
  *
- *  @author Tony Josi   https://tjosi.000webhostapp.com/
- *  @bug No known bugs.
+ *  @author         Tony Josi   https://tonyjosi97.github.io/profile/
+ *  @copyright      Copyright (C) 2020 Tony Josi
+ *  @bug            No known bugs.
  */
 
 #ifndef _GENERIC_HT_DS_H
@@ -25,7 +26,7 @@ typedef enum {
 } ght_ret_status_t;
 
 /**
- * @struct  ght_item_t
+ * @struct  _ght_item
  * @brief   GHT basic item type
  *
  * Basic structure containing the feilds for an item in the hash table
@@ -39,7 +40,7 @@ typedef struct _ght_item {
 } ght_item_t;
 
 /**
- * @struct  g_hash_table_t
+ * @struct  _g_hash_table
  * @brief   GHT handle type
  *
  * Basic structure holding all the feilds related to the specific hash table

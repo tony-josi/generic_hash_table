@@ -4,8 +4,9 @@
  *
  *  This contains the Header file for usual utility legacy file
  *
- *  @author Tony Josi   https://tjosi.000webhostapp.com/
- *  @bug No known bugs.
+ *  @author         Tony Josi   https://tonyjosi97.github.io/profile/
+ *  @copyright      Copyright (C) 2020 Tony Josi
+ *  @bug            No known bugs.
  */
 
 #ifndef _LEGACY_MACROS_H
