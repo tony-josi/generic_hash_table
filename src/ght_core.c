@@ -50,7 +50,7 @@ ght_init(g_hash_table_t *ht, size_t base, size_t item_sz) {
 
     for(unsigned int itr = 0; itr < ht->capacity; ++itr) {
         ht->items[itr].is_active = false;
-        ht->items[itr].val_ptr = (void *) (alloc_mem + (ht->item_size * itr)); 
+        ht->items[itr].val_ptr = (void *) (alloc_mem + (ht->item_size * itr));
     }
 
     return GHT_SUCCESS;
@@ -108,7 +108,8 @@ ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
  */
     unsigned int chain_len = 0;
     size_t item_index = \
-    (size_t) __ght_core_util_get_hash(key, (unsigned long) ht->capacity, chain_len);
+    (size_t) __ght_core_util_get_hash(key, \
+    (unsigned long) ht->capacity, chain_len);
 
 #if PRINT_LOG
     printf("Insert Hashes: %ld", item_index);
@@ -296,8 +297,9 @@ ght_delete(g_hash_table_t *ht, unsigned long key) {
 
 #if PRINT_LOG
         printf("\n\n\n\n\n");
-        printf("SCALE_DOWN Done New Cap: %ld     Prev Density: %d\n\n\n\n\n", \
+        printf("SCALE_DOWN Done New Cap: %ld     Prev Density: %d", \
         ht->capacity, ht_density);
+        printf("\n\n\n\n\n");
 #endif /* PRINT_LOG */
     }
 
@@ -323,9 +325,11 @@ ght_delete(g_hash_table_t *ht, unsigned long key) {
                 if((temp_item_ptr = malloc(ht->item_size)) == NULL)
                     return GHT_FAIL;
                 temp_key = ht->items[item_index].key;
-                memcpy(temp_item_ptr, ht->items[item_index].val_ptr, ht->item_size);
+                memcpy(temp_item_ptr, ht->items[item_index].val_ptr, \
+                ht->item_size);
                 __ght_core_util_item_deinit(&ht->items[item_index]);
-                if((ret_code = ght_insert(ht, temp_key, temp_item_ptr)) != GHT_SUCCESS) {
+                if((ret_code = ght_insert(ht, temp_key, temp_item_ptr)) != \
+                GHT_SUCCESS) {
                     free(temp_item_ptr);
 #if PRINT_LOG
         printf("Delete - Next item Insert Failed\n");
