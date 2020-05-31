@@ -6,7 +6,7 @@
 #include "inc/generic_hash_table.h"
 
 #define BASE_SIZE                   1931
-#define TEST_CASES                  1350
+#define TEST_CASES                  13500
 
 typedef struct _test_struct {
     int id;

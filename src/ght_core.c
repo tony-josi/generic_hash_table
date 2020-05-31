@@ -91,7 +91,8 @@ ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
 
 #if PRINT_LOG
         printf("\n\n\n\n\n");
-        printf("SCALE_UP DONE New Cap: %ld   Prev Denisty: %d\n\n\n\n\n\n", ht->capacity, ht_density);
+        printf("SCALE_UP DONE New Cap: %ld   Prev Denisty: %d\n\n\n\n\n\n",\
+        ht->capacity, ht_density);
 #endif  /* PRINT_LOG */
     }
 
@@ -120,7 +121,8 @@ ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
 
         item_index++;
         item_index = \
-        (size_t) __ght_core_util_get_hash(item_index, (unsigned long) ht->capacity, chain_len);
+        (size_t) __ght_core_util_get_hash(item_index, \
+        (unsigned long) ht->capacity, chain_len);
 
 #if PRINT_LOG
         printf("    %ld chain_len: %d", item_index, chain_len);
@@ -132,7 +134,8 @@ ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
     printf("\n");
 #endif /* PRINT_LOG */
 
-    if(__ght_core_util_item_init(&ht->items[item_index], key, val, ht->item_size) != GHT_SUCCESS)
+    if(__ght_core_util_item_init(&ht->items[item_index], key, \
+    val, ht->item_size) != GHT_SUCCESS)
         return GHT_FAIL;
 
     ht->count += 1;
@@ -160,13 +163,15 @@ ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_ptr) {
 
     unsigned int chain_len = 0;
     size_t item_index = \
-    (size_t) __ght_core_util_get_hash(key, (unsigned long) ht->capacity, chain_len);
+    (size_t) __ght_core_util_get_hash(key, \
+    (unsigned long) ht->capacity, chain_len);
 
 #if PRINT_LOG
     printf("Search Hashes: %ld", item_index);
 #endif /* PRINT_LOG */
 
-    while((ht->items[item_index].is_active == true) && (ht->items[item_index].key != key)) {
+    while((ht->items[item_index].is_active == true) && \
+    (ht->items[item_index].key != key)) {
 
         ++chain_len;
         if(chain_len == (ht->capacity - 1))
@@ -174,7 +179,8 @@ ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_ptr) {
 
         item_index++;
         item_index = \
-        (size_t) __ght_core_util_get_hash(item_index, (unsigned long) ht->capacity, chain_len);
+        (size_t) __ght_core_util_get_hash(item_index, \
+        (unsigned long) ht->capacity, chain_len);
 
 #if PRINT_LOG
         printf("    %ld chain_len: %d", item_index, chain_len);
@@ -202,8 +208,8 @@ ght_search(g_hash_table_t *ht, unsigned long key, size_t *ret_ptr) {
   * 
   * @param  [in] ht      Hash Table handle.
   * 
-  * @note   This procedure De-initializes the handle of hash table and frees all 
-  *         allocated memory. 
+  * @note   This procedure De-initializes the handle of 
+  *         hash table and frees all allocated memory. 
   * 
   * @retval Status:
   *             - #GHT_SUCCESS              De-initialize success
@@ -234,8 +240,8 @@ ght_deinit(g_hash_table_t *ht) {
   * @param  [out] ret_ptr     Pointer to the location to which 
   *                           the item will be copied.
   * 
-  * @note   This procedure searches for an item in the hash table and copies
-  *         the item to the given pointer location if present. 
+  * @note   This procedure searches for an item in the hash table 
+  *         and copies the item to the given pointer location if present. 
   * 
   * @retval Status:
   *             - #GHT_SUCCESS              Get success
@@ -265,8 +271,8 @@ ght_get(g_hash_table_t *ht, unsigned long key, void *ret_ptr) {
   * @param  [in]  ht          Hash Table handle.
   * @param  [in]  key         Key value of the item.
   * 
-  * @note   This procedure searches for an item in the hash table and deletes
-  *         the item if present. 
+  * @note   This procedure searches for an item in the hash table 
+  *         and deletes the item if present. 
   * 
   * @retval Status:
   *             - #GHT_SUCCESS              Delete success
@@ -277,7 +283,8 @@ ght_ret_status_t
 ght_delete(g_hash_table_t *ht, unsigned long key) {
 
     unsigned int ht_density = (ht->count * 100) / ht->capacity;
-    if((ht->capacity != ht->base_capacity) && (ht_density < SCALE_DOWN_THRESHOLD)) {
+    if((ht->capacity != ht->base_capacity) && \
+    (ht_density < SCALE_DOWN_THRESHOLD)) {
 
 #if PRINT_LOG
         printf("\n\n\n\n\n");
@@ -289,7 +296,8 @@ ght_delete(g_hash_table_t *ht, unsigned long key) {
 
 #if PRINT_LOG
         printf("\n\n\n\n\n");
-        printf("SCALE_DOWN Done New Cap: %ld     Prev Density: %d\n\n\n\n\n", ht->capacity, ht_density);
+        printf("SCALE_DOWN Done New Cap: %ld     Prev Density: %d\n\n\n\n\n", \
+        ht->capacity, ht_density);
 #endif /* PRINT_LOG */
     }
 
@@ -302,7 +310,8 @@ ght_delete(g_hash_table_t *ht, unsigned long key) {
         unsigned long temp_key;
         ght_ret_status_t ret_code;
         size_t item_index = \
-        (size_t) __ght_core_util_get_hash(key, (unsigned long) ht->capacity, chain_len);
+        (size_t) __ght_core_util_get_hash(key, \
+        (unsigned long) ht->capacity, chain_len);
 
 #if PRINT_LOG
         printf("Delete Hashes: ");
@@ -341,7 +350,8 @@ ght_delete(g_hash_table_t *ht, unsigned long key) {
             
             item_index++;
             item_index = \
-            (size_t) __ght_core_util_get_hash(item_index, (unsigned long) ht->capacity, chain_len);
+            (size_t) __ght_core_util_get_hash(item_index, \
+            (unsigned long) ht->capacity, chain_len);
 
         }
 
