@@ -16,7 +16,6 @@
 #include <time.h>
 #include <stdint.h>
 
-
 #include "../inc/generic_hash_table.h"
 #include "../inc/legacy_macros.h"
 #include "../inc/generic_hash_table_ds.h"
@@ -30,8 +29,13 @@ static unsigned int     check_if_prime(unsigned int);
 static unsigned int     get_next_prime(unsigned int);
 
 
+
 ght_ret_status_t 
-__ght_core_util_item_init(ght_item_t *item, unsigned long key, void *val, size_t size) {
+__ght_core_util_item_init(
+    ght_item_t *item, 
+    unsigned long key, 
+    void *val, 
+    size_t size) {
 
     item->is_active = true;
     item->key = key;
@@ -47,30 +51,43 @@ __ght_core_util_item_init(ght_item_t *item, unsigned long key, void *val, size_t
 
 
 ght_ret_status_t 
-__ght_core_util_item_deinit(ght_item_t *item) {
+__ght_core_util_item_deinit(
+    ght_item_t *item) {
     
     item->is_active = false;
 
     return GHT_SUCCESS;
 }
 
+
+
 unsigned long 
-hash_func_1(const unsigned long key, const unsigned long m) {
+hash_func_1(
+    const unsigned long key, 
+    const unsigned long m) {
 
     return (key % m);
 
 }
 
+
+
 unsigned long 
-hash_func_2(const unsigned long key) {
+hash_func_2(
+    const unsigned long key) {
     
     unsigned long x = (HASH_FUNC_2_PRIME - (key % HASH_FUNC_2_PRIME));
     return x;
 
 }
 
+
+
 unsigned long 
-__ght_core_util_get_hash(const unsigned long key, const unsigned long capacity, unsigned int chain_degreee) {
+__ght_core_util_get_hash(
+    const unsigned long key, 
+    const unsigned long capacity, 
+    unsigned int chain_degreee) {
 
     UNUSED(hash_func_1);
     UNUSED(hash_func_2);
@@ -82,7 +99,9 @@ __ght_core_util_get_hash(const unsigned long key, const unsigned long capacity, 
 
 
 unsigned int 
-check_if_prime(unsigned int num) {
+check_if_prime(
+    unsigned int num) {
+
     if(num < 2)
         return 1;
     if(num < 4)
@@ -96,6 +115,8 @@ check_if_prime(unsigned int num) {
     return 0;
 }
 
+
+
 unsigned int     
 get_next_prime(unsigned int base) {
 
@@ -105,8 +126,12 @@ get_next_prime(unsigned int base) {
     return base;
 }
 
+
+
 ght_ret_status_t 
-__ght_core_util_resize(g_hash_table_t *ht, size_t size_estimate) {
+__ght_core_util_resize(
+    g_hash_table_t *ht, 
+    size_t size_estimate) {
 
     if(size_estimate < (ht->base_capacity))
         return GHT_SUCCESS;
@@ -129,14 +154,15 @@ __ght_core_util_resize(g_hash_table_t *ht, size_t size_estimate) {
 
     for(unsigned int itr = 0; itr < new_ht.capacity; ++itr) {
         new_ht.items[itr].is_active = false;
-        new_ht.items[itr].val_ptr = (void *) (alloc_mem + (new_ht.item_size * itr)); 
+        new_ht.items[itr].val_ptr = \
+        (void *) (alloc_mem + (new_ht.item_size * itr)); 
     }
 
     if(ht->items) {
         for(size_t i = 0; i < ht->capacity; i++) 
             if(ht->items[i].is_active == true) {
-                if((ret_code = ght_insert(&new_ht, ht->items[i].key, ht->items[i].val_ptr)) != \
-                GHT_SUCCESS)
+                if((ret_code = ght_insert(&new_ht, ht->items[i].key, \
+                ht->items[i].val_ptr)) != GHT_SUCCESS)
                     return GHT_FAIL;
             }
     }
@@ -149,8 +175,11 @@ __ght_core_util_resize(g_hash_table_t *ht, size_t size_estimate) {
     return GHT_SUCCESS;
 }
 
+
+
 ght_ret_status_t 
-__ght_core_util_scale_up(g_hash_table_t *ht) {
+__ght_core_util_scale_up(
+    g_hash_table_t *ht) {
     
     if(__ght_core_util_resize(ht, (size_t)(ht->capacity * 2)) != GHT_SUCCESS)
         return GHT_FAIL;
@@ -160,7 +189,8 @@ __ght_core_util_scale_up(g_hash_table_t *ht) {
 
 
 ght_ret_status_t 
-__ght_core_util_scale_down(g_hash_table_t *ht) {
+__ght_core_util_scale_down(
+    g_hash_table_t *ht) {
 
     if(__ght_core_util_resize(ht, (size_t)(ht->capacity / 2)) != GHT_SUCCESS) 
         return GHT_FAIL;
@@ -169,8 +199,10 @@ __ght_core_util_scale_down(g_hash_table_t *ht) {
 }
 
 
+
 unsigned long 
-get_time_in_nanosec(void) {
+get_time_in_nanosec(
+    void) {
     struct timespec ts;
     timespec_get(&ts, TIME_UTC);
     return (unsigned long)ts.tv_sec * 1000000000L + ts.tv_nsec;
