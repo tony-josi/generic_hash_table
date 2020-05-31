@@ -15,7 +15,7 @@
 #include "./generic_hash_table_ds.h"
 
 #define HASH_FUNC_2_PRIME                 277
-#define PRINT_LOG                         0
+#define PRINT_LOG                         1
 #define SCALE_UP_THRESHOLD                60
 #define SCALE_DOWN_THRESHOLD              20
 

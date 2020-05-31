@@ -289,6 +289,7 @@ ght_ret_status_t
 ght_delete(g_hash_table_t *ht, unsigned long key) {
 
     unsigned int ht_density = (ht->count * 100) / ht->capacity;
+    printf("Delete density: %d Count: %ld Capcity: %ld\n", ht_density, ht->count, ht->capacity);
     if((ht->capacity != ht->base_capacity) && \
     (ht_density < SCALE_DOWN_THRESHOLD)) {
 
@@ -313,8 +314,6 @@ ght_delete(g_hash_table_t *ht, unsigned long key) {
     if(ht->count > 0) {
 
         unsigned int chain_len = 0;
-        void *temp_item_ptr = NULL;
-        unsigned long temp_key;
         ght_ret_status_t ret_code;
         size_t item_index = \
         (size_t) __ght_core_util_get_hash(key, \
@@ -327,21 +326,17 @@ ght_delete(g_hash_table_t *ht, unsigned long key) {
         while(ht->items[item_index].is_active == true) {
 
             if(item_found == true) {
-                if((temp_item_ptr = malloc(ht->item_size)) == NULL)
-                    return GHT_FAIL;
-                temp_key = ht->items[item_index].key;
-                memcpy(temp_item_ptr, ht->items[item_index].val_ptr, \
-                ht->item_size);
+
+                ht->count -= 1;
                 __ght_core_util_item_deinit(&ht->items[item_index]);
-                if((ret_code = ght_insert(ht, temp_key, temp_item_ptr)) != \
-                GHT_SUCCESS) {
-                    free(temp_item_ptr);
+
+                if((ret_code = ght_insert(ht, ht->items[item_index].key, \
+                ht->items[item_index].val_ptr)) != GHT_SUCCESS) {
 #if PRINT_LOG
         printf("Delete - Next item Insert Failed\n");
 #endif /* PRINT_LOG */
                     return GHT_FAIL;
                 }
-                free(temp_item_ptr);
             }
 
             if(ht->items[item_index].key == key) {
