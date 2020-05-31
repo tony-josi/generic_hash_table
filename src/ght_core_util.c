@@ -18,6 +18,7 @@
 
 
 #include "../inc/generic_hash_table.h"
+#include "../inc/legacy_macros.h"
 #include "../inc/generic_hash_table_ds.h"
 #include "../inc/generic_hash_table_core_util.h"
 
@@ -71,8 +72,9 @@ hash_func_2(const unsigned long key) {
 unsigned long 
 __ght_core_util_get_hash(const unsigned long key, const unsigned long capacity, unsigned int chain_degreee) {
 
-    const unsigned long first_hash = hash_func_1(key, capacity);
-    const unsigned long second_hash = hash_func_2(key);
+    UNUSED(hash_func_1);
+    UNUSED(hash_func_2);
+    UNUSED(chain_degreee);
     return (key % capacity);
 
 }
