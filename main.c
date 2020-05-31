@@ -6,7 +6,7 @@
 #include "inc/generic_hash_table.h"
 
 #define BASE_SIZE                   1931
-#define TEST_CASES                  13500
+#define TEST_CASES                  3250
 
 typedef struct _test_struct {
     int id;
@@ -25,6 +25,8 @@ int main()
 
     unsigned int insert_counter = 0;
     unsigned long inserted_keys[TEST_CASES];
+
+    clock_t begin = clock();
 
     if(ght_init(&ht, BASE_SIZE, sizeof(test_t)) != GHT_SUCCESS) {
         printf("Init Failed\n");
@@ -64,6 +66,14 @@ int main()
 
     if(ght_deinit(&ht) != GHT_SUCCESS) {
         printf("Init Failed\n");
+        return EXIT_FAILURE;
+    }
+    else {
+        clock_t end = clock();
+        double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+        printf("DE INIT SUCCESS!\n");
+        printf("Execution time: %f\n", time_spent);
+        return EXIT_SUCCESS;
     }
     
     return 0;
