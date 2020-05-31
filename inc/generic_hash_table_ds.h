@@ -50,6 +50,8 @@ typedef struct _g_hash_table {
     size_t              capacity;           /*!< Current capacity of Hash Table */
     size_t              item_size;          /*!< Size of an item in Hash Table */
     size_t              count;              /*!< Current count items in Hash Table */
+    unsigned int        scaling_factor;     /*!< Current number of up scalings, 
+                                                 decreased on scale down */
     ght_item_t         *items;              /*!< Pointer to the items memory of Hash Table */
 
 } g_hash_table_t;

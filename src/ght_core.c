@@ -40,6 +40,7 @@ ght_init(g_hash_table_t *ht, size_t base, size_t item_sz) {
     ht->base_capacity = base;
     ht->capacity = ht->base_capacity;
     ht->item_size = item_sz;
+    ht->scaling_factor = 0;
     ht->count = 0;
     if((ht->items = \
     (ght_item_t *) calloc(ht->capacity, sizeof(ght_item_t)))  == NULL)
@@ -91,10 +92,12 @@ ght_insert(g_hash_table_t *ht, unsigned long key, void *val) {
         if(__ght_core_util_scale_up(ht) != GHT_SUCCESS) 
             return GHT_FAIL;
 
+        ht->scaling_factor += 1;
+
 #if PRINT_LOG
         printf("\n\n\n\n\n");
-        printf("SCALE_UP DONE New Cap: %ld   Prev Denisty: %d\n\n\n\n\n\n",\
-        ht->capacity, ht_density);
+        printf("SCALE_UP DONE NewCap: %ld PrvDens: %d ScFac: %d\n\n\n\n\n\n",\
+        ht->capacity, ht_density, ht->scaling_factor);
 #endif  /* PRINT_LOG */
     }
 
@@ -289,8 +292,8 @@ ght_ret_status_t
 ght_delete(g_hash_table_t *ht, unsigned long key) {
 
     unsigned int ht_density = (ht->count * 100) / ht->capacity;
-    printf("Delete density: %d Count: %ld Capcity: %ld\n", ht_density, ht->count, ht->capacity);
-    if((ht->capacity != ht->base_capacity) && \
+
+    if((ht->scaling_factor > 0) && \
     (ht_density < SCALE_DOWN_THRESHOLD)) {
 
 #if PRINT_LOG
@@ -301,11 +304,13 @@ ght_delete(g_hash_table_t *ht, unsigned long key) {
         if(__ght_core_util_scale_down(ht) != GHT_SUCCESS)
             return GHT_FAIL;
 
+        ht->scaling_factor -= 1;
+
 #if PRINT_LOG
-        printf("\n\n\n\n\n");
-        printf("SCALE_DOWN Done New Cap: %ld     Prev Density: %d", \
-        ht->capacity, ht_density);
-        printf("\n\n\n\n\n");
+    printf("\n\n\n\n\n");
+    printf("SCALE_DOWN Done PrvDen: %d Count: %ld Cap: %ld Sc. Fac: %d", \
+    ht_density, ht->count, ht->capacity, ht->scaling_factor);
+    printf("\n\n\n\n\n");
 #endif /* PRINT_LOG */
     }
 

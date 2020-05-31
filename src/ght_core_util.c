@@ -26,7 +26,6 @@
 static unsigned long    hash_func_1(const unsigned long, const unsigned long);
 static unsigned long    hash_func_2(const unsigned long);
 static unsigned int     check_if_prime(unsigned int);
-static unsigned int     get_next_prime(unsigned int);
 
 
 
@@ -143,6 +142,7 @@ __ght_core_util_resize(
     new_ht.base_capacity = ht->base_capacity;
     new_ht.capacity = new_size;
     new_ht.item_size = ht->item_size;
+    new_ht.scaling_factor = ht->scaling_factor;
     new_ht.count = 0;
     if((new_ht.items = \
     (ght_item_t *) calloc(new_ht.capacity, sizeof(ght_item_t)))  == NULL)
