@@ -6,6 +6,8 @@ _______
 
 Hash Table implementation using [Open addressing](https://en.wikipedia.org/wiki/Open_addressing) & [Linear probing](https://en.wikipedia.org/wiki/Linear_probing) method.
 
+> Hash tables are the most commonly used nontrivial data structures, and the most popular implementation on standard hardware uses linear probing, which is both fast and simple.
+
 > **Open addressing**
 
 Open addressing, or closed hashing, is a method of collision resolution in hash tables. With this method a hash collision is resolved by probing, or searching through alternate locations in the array (the probe sequence) until either the target record is found, or an unused array slot is found, which indicates that there is no such key in the table.
@@ -15,7 +17,6 @@ Open addressing, or closed hashing, is a method of collision resolution in hash 
 Each cell of a hash table stores a single key–value pair. When the hash function causes a collision by mapping a new key to a cell of the hash table that is already occupied by another key, linear probing searches the table for the closest following free location and inserts the new key there. Lookups are performed in the same way, by searching the table sequentially starting at the position given by the hash function, until finding a cell with a matching key or an empty cell.
 
 
-> Hash tables are the most commonly used nontrivial data structures, and the most popular implementation on standard hardware uses linear probing, which is both fast and simple.
 
 ### Test Status
 
