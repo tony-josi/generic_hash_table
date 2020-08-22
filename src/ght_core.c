@@ -18,7 +18,7 @@
 #include "../inc/generic_hash_table.h"
 #include "../inc/generic_hash_table_core_util.h"
 
-
+#define PRINT_LOG  0 
 
 /**
   * @brief  Initialize the hash table data structure.

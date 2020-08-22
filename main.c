@@ -9,11 +9,70 @@
 #define TEST_CASES                  3250
 
 typedef struct _test_struct {
-    int id;
-    float val;
+    int x;
+    float y;
 } test_t;
 
+double master_tester() {
+    
+    g_hash_table_t ht;
+    test_t temp_var;
+    unsigned long temp_key;
 
+    unsigned long key_holder[TEST_CASES];
+
+    if(ght_init(&ht, BASE_SIZE, sizeof(test_t)) != GHT_SUCCESS) {
+        printf("Init Failed\n");
+    }
+
+    for(unsigned int i = 0; i < TEST_CASES; ++i) {
+        temp_var.x = (655363463 * (i + 1)) % 1931;
+        temp_var.y = (623434552 * (i + 1)) % 1931;
+        ght_generate_key(&temp_key); 
+        key_holder[i] = temp_key;
+        if(ght_insert(&ht, temp_key, &temp_var) != GHT_SUCCESS) {
+            printf("Insert Error\n");
+        }
+        printf("Insert %ld\n", key_holder[i]);
+    }
+
+    //std::cout<<"--------------\n";
+
+    for(int i = 0; i < TEST_CASES; ++i) {
+        if(ght_get(&ht, key_holder[i], &temp_var) != GHT_SUCCESS) {
+            printf("Not found\n");
+        }
+        printf("Got %ld %d %f\n", key_holder[i], temp_var.x, temp_var.y);
+        if(ght_delete(&ht, key_holder[i]) != GHT_SUCCESS) {
+            printf("Error Delete\n");
+        }
+        printf("Delete %ld\n", key_holder[i]);
+    }
+
+    if(ght_deinit(&ht) != GHT_SUCCESS) {
+        printf("Init Failed\n");
+        return EXIT_FAILURE;
+    }
+    
+    return 0;
+}
+
+int main()
+{
+
+    const int t_cases = 100;
+    clock_t begin = clock();
+    for(int i = 0 ; i < t_cases; ++i) {
+        master_tester();
+    }
+    clock_t end = clock();
+    float val = ((end - begin) / ((float)CLOCKS_PER_SEC));
+    //std::cout<<end<<" "<<begin<<" "<<CLOCKS_PER_SEC<<" "<<val<<std::endl; 
+    printf("Delay: %f\n", val/t_cases); 
+
+}
+
+#if 0
 int main()
 {
     srand(time(0)); 
@@ -78,6 +137,7 @@ int main()
     
     return 0;
 }
+#endif
 
 
 #if 0
